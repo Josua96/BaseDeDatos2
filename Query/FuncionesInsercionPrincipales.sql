@@ -89,6 +89,7 @@ LANGUAGE plpgsql;
 select insert_calzadaD ('calzadaPrueba');
 select * from DetallesAccidentes.DescripcionesCalzadas 
 drop function insert_calzadAD(VARCHAR)
+
 CREATE OR REPLACE FUNCTION insert_calzadaD
 (p_descripcion VARCHAR(50)
 )

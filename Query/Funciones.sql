@@ -47,7 +47,7 @@ LANGUAGE plpgsql;
 --Cantones
 
 --insertar
-select * from Direccion.Cantones
+
 CREATE OR REPLACE FUNCTION insertar_cantones
 (
 	p_idProvincia INTEGER,
@@ -60,8 +60,6 @@ BEGIN
 END;
 $BODY$ 
 LANGUAGE plpgsql;
-
-Select insertar_cantones();
 
 --modificar
 CREATE OR REPLACE FUNCTION modificar_cantones
@@ -216,7 +214,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --MODIFICAR
-select * from AccidentesTran.AccidentesGenerales
+
 CREATE OR REPLACE FUNCTION modificar_accidentesGenerales
 (	p_idAccidente INTEGER,
 	p_horaInicio TIME,
