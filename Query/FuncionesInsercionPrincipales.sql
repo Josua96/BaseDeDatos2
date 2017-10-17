@@ -22,14 +22,17 @@ BEGIN
 		numero=1;
 	ELSIF (p_dia LIKE 'Martes') THEN
 		numero=2;
-
-	ELSIF (p_dia LIKE 'Mierccoles') THEN
+	ELSIF (p_dia SIMILAR TO 'Miércoles') THEN
+		numero=3;
+	ELSIF (p_dia SIMILAR TO 'Miercoles') THEN
 		numero=3;
 	ELSIF (p_dia LIKE 'Jueves') THEN
 		numero=4;
 	ELSIF (p_dia LIKE 'Viernes') THEN
 		numero=5;
-	ELSIF (p_dia LIKE 'Sabado') THEN
+	ELSIF (p_dia SIMILAR TO 'Sábado') THEN
+		numero=6;
+	ELSIF (p_dia SIMILAR TO 'Sabado') THEN
 		numero=6;
 	ELSIF (p_dia LIKE 'Domingo') THEN
 		numero=7;
@@ -64,17 +67,19 @@ BEGIN
 		numero=6;
 	ELSIF (p_mes LIKE 'Julio') THEN
 		numero=7;
-
 	ELSIF (p_mes LIKE 'Agosto') THEN
 		numero=8;
 
-	ELSIF (p_mes LIKE 'Setiembre') THEN
+	ELSIF (p_mes SIMILAR TO 'Septiembre') THEN
+		numero=9;
+		
+	ELSIF (p_mes SIMILAR TO 'Setiembre') THEN
 		numero=9;
 
 	ELSIF (p_mes LIKE 'Octubre') THEN
 		numero=10;
 
-	ELSIF (p_mes LIKE 'Novimbre') THEN
+	ELSIF (p_mes LIKE 'Noviembre') THEN
 		numero=11;
 		
 	ELSIF (p_mes LIKE 'Diciembre') THEN
