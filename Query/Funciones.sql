@@ -9,6 +9,7 @@ AS
 $BODY$
 BEGIN
 	INSERT INTO Direccion.Provincias (NombreProvincia) VALUES (p_nombreProvincia);
+	
 END;
 $BODY$ 
 LANGUAGE plpgsql;
@@ -156,7 +157,7 @@ CREATE OR REPLACE FUNCTION modificar_accidente
 ( 
 	p_idAccidente		INTEGER,
 	p_idTipoLesion 		INTEGER,
-	p_fechaAccidente 	VARCHAR(50)	
+	p_fechaAccidente 	DATE	
 ) RETURNS VOID
 AS
 $BODY$
@@ -507,7 +508,7 @@ LANGUAGE plpgsql;
 --TiposCalzadas
 
 --INSERTAR
-CREATE OR REPLACE FUNCTION insertar_TiposCalzadas
+CREATE OR REPLACE FUNCTION insertar_tiposCalzadas
 (
 	p_tipo VARCHAR(50)
 ) RETURNS VOID
@@ -520,7 +521,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --MODIFICAR
-CREATE OR REPLACE FUNCTION modificar_TiposCalzadas
+CREATE OR REPLACE FUNCTION modificar_tiposCalzadas
 (
 	p_id INTEGER,
 	p_tipo VARCHAR(50)
@@ -535,7 +536,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --ELIMINAR
-CREATE OR REPLACE FUNCTION borrar_TiposCalzadas
+CREATE OR REPLACE FUNCTION borrar_tiposCalzadas
 (
 	p_id INTEGER
 ) RETURNS VOID
@@ -594,7 +595,7 @@ LANGUAGE plpgsql;
 --TiposLesiones
 
 --INSERTAR
-CREATE OR REPLACE FUNCTION insertar_TiposLesiones
+CREATE OR REPLACE FUNCTION insertar_tiposLesiones
 (
 	p_tipo VARCHAR(50)
 ) RETURNS VOID
@@ -609,7 +610,7 @@ LANGUAGE plpgsql;
 
 
 --MODIFICAR
-CREATE OR REPLACE FUNCTION modificar_TiposLesiones
+CREATE OR REPLACE FUNCTION modificar_tiposLesiones
 (
 	p_id INTEGER,
 	p_tipo VARCHAR(50)
@@ -624,7 +625,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --ELIMINAR
-CREATE OR REPLACE FUNCTION borrar_TiposLesiones
+CREATE OR REPLACE FUNCTION borrar_tiposLesiones
 (
 	p_id INTEGER
 ) RETURNS VOID
@@ -639,7 +640,7 @@ LANGUAGE plpgsql;
 --KilometrosRutas
 
 --INSERTAR
-CREATE OR REPLACE FUNCTION insertar_KilometrosRutas
+CREATE OR REPLACE FUNCTION insertar_kilometrosRutas
 (
 	p_numero VARCHAR(50)
 ) RETURNS VOID
@@ -653,7 +654,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --MODIFICAR
-CREATE OR REPLACE FUNCTION modificar_KilometrosRutas
+CREATE OR REPLACE FUNCTION modificar_kilometrosRutas
 (	p_id INTEGER,
 	p_numero VARCHAR(50)
 ) RETURNS VOID
@@ -667,7 +668,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --ELIMINAR
-CREATE OR REPLACE FUNCTION borrar_KilometrosRutas
+CREATE OR REPLACE FUNCTION borrar_kilometrosRutas
 (	
 	p_id INTEGER
 ) RETURNS VOID
@@ -726,7 +727,7 @@ LANGUAGE plpgsql;
 --RolesPersonas
 
 --INSERTAR
-CREATE OR REPLACE FUNCTION insertar_RolesPersonas
+CREATE OR REPLACE FUNCTION insertar_rolesPersonas
 (
 	p_rol VARCHAR(50)
 ) RETURNS VOID
@@ -740,7 +741,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --MODIFICAR
-CREATE OR REPLACE FUNCTION modificar_RolesPersonas
+CREATE OR REPLACE FUNCTION modificar_rolesPersonas
 (	p_id INTEGER,
 	p_rol VARCHAR(50)
 ) RETURNS VOID
@@ -754,7 +755,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 --ELIMINAR
-CREATE OR REPLACE FUNCTION borrar_RolesPersonas
+CREATE OR REPLACE FUNCTION borrar_rolesPersonas
 (	
 	p_id INTEGER
 ) RETURNS VOID
