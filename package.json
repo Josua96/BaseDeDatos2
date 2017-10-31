@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Josua96/ConexionDatosRequeridos#readme",
   "dependencies": {
+    "async": "^2.5.0",
+    "express": "^4.16.2",
     "pg": "^6.1.0",
     "request": "^2.81.0"
   }

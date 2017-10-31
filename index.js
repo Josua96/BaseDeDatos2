@@ -6,48 +6,12 @@
 const pg = require('pg'); //postgres controller
 const conString = "postgres://postgres:12345@localhost:5432/AccidentesTransito"; //connection link
 const client = new pg.Client(conString);
-const sync = require('synchronize');
+var async = require('async');
 
 /*
-===========================================================================
->   Función encargada de la inserción de accidentes en la base de datos   <
-===========================================================================
-*/
-function insertarAccidentes(claseAccidente, tipoAccidente, anio, mes, dia, hora, provincia, canton, distrito, ruta, kilometro, 
-    tipoRuta, ruralUbano, calzadaVertical, calzadaHorizontal, tipoCalzada, estadoTiempo, tipoCirculacion){    
-    // se llama la función SQL que se encarga de insertar accidentes
-    const query = client.query("SELECT insertarAccidenteGeneral ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18);",
-                    [claseAccidente, tipoAccidente, anio, mes, dia, hora, provincia, canton, distrito, ruta, kilometro, 
-                    tipoRuta, ruralUbano, calzadaVertical, calzadaHorizontal, tipoCalzada, estadoTiempo, tipoCirculacion]); 
-}
-
-/*
-===========================================================================
->   Función encargada de la inserción de fallecidos en la base de datos   <
-===========================================================================
-*/
-function insertarFallecidos(dia, mes, ano, tipoAccidente, provincia, canton, ruta, rolPersona, sexo, edad, franja){
-    // se llama la función SQL que se encarga de insertar fallecidos
-    const query = sync.await(client.query("SELECT insertarEnFallecidos ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);",
-                    [dia, mes, ano, tipoAccidente, provincia, canton, ruta, rolPersona, sexo, edad, franja],sync.defer()));
-        
-}
-
-/*
-===============================================================================================
->   Función encargada de la inserción de accidentes Personas Accidentes en la base de datos   <
-===============================================================================================
-*/
-function insertarPersonasAccidentes(rol, tipoLesion, edad, sexo, anio, mes, dia, provincia, canton, distrito){
-    // se llama la función SQL que se encarga de insertar personas accidentadas
-    const query = client.query("SELECT insertarEnHeridos ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);",
-                    [rol, tipoLesion, edad, sexo, anio, mes, dia, provincia, canton, distrito]);    
-}
-
-/*
-============================================================================
->   Función encargada de la extracción de Fallecidos de la API de COSEVI   <
-============================================================================
+=======================================================================================================================
+>   Función encargada de la inserción de Fallecidos en la BD desde un archivo JSON exportado desde la  API de COSEV   <
+=======================================================================================================================
 */
 function extraerFallecidos(){
     client.connect();
@@ -58,159 +22,123 @@ function extraerFallecidos(){
         if (!error && response.statusCode == 200) {
             var dia = '', mes = '', ano = '', tipoAccidente = '', provincia = '', canton = '', ruta = '', rolPersona = '', sexo = '', 
             edad = '', franja = '';
-            
-            for (var i = 1; i < JSON.parse(response.body).result.length; i++) { // JSON.parse(response.body).result.length
 
-                var respuesta = JSON.parse(response.body).result[i];
-    
-                dia = respuesta[1];
-                mes = respuesta[2];
-                ano = respuesta[3];
-                console.log(i+") "+respuesta+"\n");
-                tipoAccidente = respuesta[4];
-                provincia = respuesta[5];
-                canton = respuesta[6];
-                ruta = respuesta[7];
-                rolPersona = respuesta[8];
-                sexo = respuesta[9];         
-                edad = respuesta[10];
-                franja = respuesta[12];
+            async.forEach(JSON.parse(response.body).result, function(element, callback) {
+                dia = element[1];
+                mes = element[2];
+                ano = element[3];
+                tipoAccidente = element[4];
+                provincia = element[5];
+                canton = element[6];
+                ruta = element[7];
+                rolPersona = element[8];
+                sexo = element[9];         
+                edad = element[10];
+                franja = element[12];  
+        
+                const query = client.query("SELECT insertarEnFallecidos ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);",
+                [dia, mes, ano, tipoAccidente, provincia, canton, ruta, rolPersona, sexo, edad, franja],callback);
 
-                insertarFallecidos(dia,mes,ano,tipoAccidente,provincia,canton,ruta,rolPersona,sexo,edad,franja);
-            }
+            }, function(err) {
+                if (err)
+                    return err;        
+                res.json({
+                    success: true,
+                    message: "successful insertions on Fallecidos table."
+                });
+            });
+            console.log("\nFinalización con la inserción de fallecidos.\n\n");
         }
         else{
             console.log("Ocurrió un error durante la inserción de los datos.");
         }
-    });
-    console.log("\nFinalización con la inserción de fallecidos.\n\n")
+    });    
 }
 
 /*
-============================================================================
->   Función encargada de la extracción de Accidentes de la API de COSEVI   <
-============================================================================
+========================================================================================================================
+>   Función encargada de la inserción de Accidentes en la BD desde un archivo JSON exportado desde la  API de COSEVI   <
+========================================================================================================================
 */
-function extraerAccidentes(){    
+function extraerAccidentes(){
     client.connect();
-    console.log("\n\nInsertando información de Accidentes en la base de datos, esto puede tardar bastante tiempo por la gran cantidad de datos...");
-    var request = require('request');
-    request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/CLASE-Y-TIPOS-DE-ACCID/data.ajson/?auth_key=7c23534c30d3fd449f1bd5638363c17b89b7617e', 
-        function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var claseAccidente = '', tipoAccidente = '', anio = '', mes = '', dia = '', hora = '', provincia = '', canton = '', 
-            distrito = '', ruta = '', kilometro = '', tipoRuta = '', ruralUbano = '', calzadaVertical = '', calzadaHorizontal = '', 
-            tipoCalzada = '', estadoTiempo = '', tipoCirculacion = '';
-            
-            for (var i = 1; i < JSON.parse(response.body).result.length; i++) { // JSON.parse(response.body).result.length
-                
-                var respuesta = JSON.parse(response.body).result[i];
-                
-                claseAccidente = respuesta[1];                
-                tipoAccidente = respuesta[2];
-                anio = respuesta[3];
-                mes = respuesta[4];
-                dia = respuesta[5];
-                console.log(i+") "+dia+" - "+mes+" - "+anio+"\n");
-                hora = respuesta[7];
-                provincia = respuesta[8];         
-                canton = respuesta[9];
-                distrito = respuesta[10];
-                ruta = respuesta[11];
-                kilometro = respuesta[12];
-                tipoRuta = respuesta[13];
-                ruralUbano = respuesta[14];
-                calzadaVertical = respuesta[15];
-                calzadaHorizontal = respuesta[16];
-                tipoCalzada = respuesta[17];
-                estadoTiempo = respuesta[18];
-                tipoCirculacion = respuesta[19];
-                insertarAccidentes(claseAccidente, tipoAccidente, anio, mes, dia, hora, provincia, canton, distrito, ruta, kilometro, 
-                    tipoRuta, ruralUbano, calzadaVertical, calzadaHorizontal, tipoCalzada, estadoTiempo, tipoCirculacion)       
-            }
-        }
-        else{
-            console.log("Ocurrió un error durante la inserción de los datos.");
-        }
-    });
-    console.log("\nFinalización con la inserción de accidentes.\n\n")
+    var claseAccidente = '', tipoAccidente = '', anio = '', mes = '', dia = '', hora = '', provincia = '', canton = '', 
+    distrito = '', ruta = '', kilometro = '', tipoRuta = '', ruralUbano = '', calzadaVertical = '', calzadaHorizontal = '', 
+    tipoCalzada = '', estadoTiempo = '', tipoCirculacion = '';
+    
+    var object = require("./Accidentes.json");
+
+    async.forEach(object, function(element, callback) {
+        claseAccidente = element[1];                
+        tipoAccidente = element[2];
+        anio = element[3];
+        mes = element[4];
+        dia = element[5];
+        hora = element[7];
+        provincia = element[8];         
+        canton = element[9];
+        distrito = element[10];
+        ruta = element[11];
+        kilometro = element[12];
+        tipoRuta = element[13];
+        ruralUbano = element[14];
+        calzadaVertical = element[15];
+        calzadaHorizontal = element[16];
+        tipoCalzada = element[17];
+        estadoTiempo = element[18];
+        tipoCirculacion = element[19];
+    
+        const query = client.query("SELECT insertarAccidenteGeneral ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18);",
+        [claseAccidente, tipoAccidente, anio, mes, dia, hora, provincia, canton, distrito, ruta, kilometro, 
+        tipoRuta, ruralUbano, calzadaVertical, calzadaHorizontal, tipoCalzada, estadoTiempo, tipoCirculacion],callback);
+        
+    }, function(err) {
+        if (err)
+            return err;        
+        res.json({
+            success: true,
+            message: "successful insertions on Accidents table."
+        });
+    });    
+    console.log("\nFinalización con la inserción de accidentes.\n\n");
 }
+
 /*
-=======================================================================================
->   Función encargada de la extracción de Personas Accidentadas de la API de COSEVI   <
-=======================================================================================
+===================================================================================================================================
+>   Función encargada de la inserción de Personas Accidentadas en la BD desde un archivo JSON exportado desde la  API de COSEVI   <
+===================================================================================================================================
 */
-function extraerPersonasAccidentes(){ 
+function extraerPersonasAccidentes(){
     client.connect();
-    console.log("\n\nInsertando información de Personas Accidentadas en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
-    var request = require('request');
-    request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/TIPOS-DE-DANOS-ACUSA-A/data.ajson/?auth_key=c656630ccf30988a7621d650ac285fc60dff9093&limit=2000', 
-        function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var rol = '', tipoLesion = '', edad = '', sexo = '', anio = '', mes = '', dia = '', provincia = '', canton = '', 
-            distrito = '';
-            
-            for (var i = 1; i < JSON.parse(response.body).result.length; i++) { // JSON.parse(response.body).result.length
-            async.forEach(JSON.parse(response.body).result.length,function(fila,callback) {
-                
-            }, this);
-                var respuesta = JSON.parse(response.body).result[i];
-    
-                rol = respuesta[1];
-                tipoLesion = respuesta[2];
-                edad = respuesta[3];
-                sexo = respuesta[5];
-                anio = respuesta[6];
-                mes = respuesta[7];
-                dia = respuesta[8];
-                provincia = respuesta[9];
-                canton = respuesta[10];         
-                distrito = respuesta[11];
-                
-                insertarPersonasAccidentes(rol, tipoLesion, edad, sexo, anio, mes, dia, provincia, canton, distrito);
-            }
-        }
-        else{
-            console.log("Ocurrió un error durante la inserción de los datos.");
-        }
-    });
-    console.log("\nFinalización con la inserción de personas accidentadas.\n\n")
-}
+    var rol = '', tipoLesion = '', edad = '', sexo = '', anio = '', mes = '', dia = '', provincia = '', canton = '', 
+    distrito = '';
 
+    var object = require("./PersonasAccidentes.json");
+    console.log(object.length);
+    async.forEach(object, function(element, callback) {
+        rol = element[1];
+        tipoLesion = element[2];
+        edad = element[3];
+        sexo = element[5];
+        anio = element[6];
+        mes = element[7];
+        dia = element[8];
+        provincia = element[9];
+        canton = element[10];         
+        distrito = element[11];  
 
-function extraerPersonasAccidentes1(){ 
-    client.connect();
-    console.log("\n\nInsertando información de Personas Accidentadas en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
-    var request = require('request');
-    request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/TIPOS-DE-DANOS-ACUSA-A/data.ajson/?auth_key=c656630ccf30988a7621d650ac285fc60dff9093&limit=3000', 
-        function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var rol = '', tipoLesion = '', edad = '', sexo = '', anio = '', mes = '', dia = '', provincia = '', canton = '', 
-            distrito = '';
-            
-            for (var i = 1; i < JSON.parse(response.body).result.length; i++) { // JSON.parse(response.body).result.length
+        const query = client.query("SELECT insertarEnHeridos ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);",
+        [rol, tipoLesion, edad, sexo, anio, mes, dia, provincia, canton, distrito],callback);
 
-                var respuesta = JSON.parse(response.body).result[i];
-    
-                rol = respuesta[1];
-                tipoLesion = respuesta[2];
-                edad = respuesta[3];
-                sexo = respuesta[5];
-                anio = respuesta[6];
-                mes = respuesta[7];
-                dia = respuesta[8];
-                provincia = respuesta[9];
-                canton = respuesta[10];         
-                distrito = respuesta[11];
-                
-                insertarPersonasAccidentes(rol, tipoLesion, edad, sexo, anio, mes, dia, provincia, canton, distrito);
-            }
-        }
-        else{
-            console.log("Ocurrió un error durante la inserción de los datos.");
-        }
-    });
-    console.log("\nFinalización con la inserción de personas accidentadas.\n\n")
+    }, function(err) {
+        if (err)
+            return err;        
+        res.json({
+            success: true,
+            message: "successful insertions on Heridos table."
+        });
+    });    
+    console.log("\nFinalización con la inserción de personas accidentadas.\n\n");
 }
 
 /*
@@ -218,10 +146,6 @@ function extraerPersonasAccidentes1(){
 >   Llamado de las funciones para que procedan con la extracción de la información   <
 ======================================================================================
 */
-//extraerFallecidos(); // Funciona 100%
-//extraerAccidentes(); // Funciona 100%
-extraerPersonasAccidentes1();
-
-//console.log("\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n*      Los datos de la tabla FALLECIDOS, ACCIDENTES y PERSONAS ACCIDENTADAS fueron insertados en la base de datos de manera exitosa.      *\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
-/*
-*/
+//extraerAccidentes();
+extraerPersonasAccidentes();
+//extraerFallecidos();
