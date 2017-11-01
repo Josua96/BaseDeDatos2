@@ -1,0 +1,21 @@
+<center>
+
+    <div style="padding-top: 10%">
+        <label style="font-size: x-large"> Seleccione la provincia a la que pertenece el cantón </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in provincias "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nombre del canton </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="insertarCanton()"> Registrar Cantón </button>
+
+    </div>
+</center>
