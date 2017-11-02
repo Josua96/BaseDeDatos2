@@ -1,0 +1,29 @@
+<center>
+
+    <div style="padding-top: 10%">
+        <label style="font-size: x-large"> Seleccione la provincia a la que pertenece el cantón </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
+            <option  ng-repeat="x in provincias" > {{x.model}}</option>
+        </select>
+
+        <label style="font-size: x-large"> Seleccione el cantón a modificar </label>
+        <br>
+
+        <select class="form-control" id="selecc" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in cantones " > {{x.model}}</option>
+        </select>
+
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nuevo nombre para el cantón </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="modificarCanton()"> Realizar modificación </button>
+
+    </div>
+</center>

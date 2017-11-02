@@ -1,0 +1,21 @@
+<center>
+
+    <div style="padding-top: 10%">
+        <label style="font-size: x-large"> Provincias Registradas </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in provincias "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nuevo nombre de la provincia </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="eliminarProvincia()"> Realizar modificación </button>
+
+    </div>
+</center>

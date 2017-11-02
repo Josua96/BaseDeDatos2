@@ -15,7 +15,7 @@ CREATE TABLE Direccion.Cantones
 	IdProvincia 	SMALLINT 	NOT NULL,
 	NombreCanton 	VARCHAR(50) 	NOT NULL,
 	CONSTRAINT  PK_IdCanton_Cantones PRIMARY KEY (IdCanton),
-	CONSTRAINT  FK_IdProvincia_Cantones FOREIGN KEY (IdProvincia) REFERENCES Direccion.Provincias ON DELETE CASCADE ON UPDATE CASCADE  
+	CONSTRAINT  FK_IdProvincia_Cantones FOREIGN KEY (IdProvincia) REFERENCES Direccion.Provincias(IdProvincia) ON DELETE CASCADE ON UPDATE CASCADE  
 );
 
 CREATE TABLE Direccion.Distritos 
@@ -24,7 +24,7 @@ CREATE TABLE Direccion.Distritos
 	IdCanton	SMALLINT NOT NULL,
 	NombreDistrito	VARCHAR(50) NOT NULL,
 	CONSTRAINT	PK_IdDistrito_Distritos	PRIMARY KEY (IdDistrito),
-	CONSTRAINT	FK_IdCanton_Distritos	FOREIGN KEY(IdCanton) REFERENCES Direccion.Cantones ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT	FK_IdCanton_Distritos	FOREIGN KEY(IdCanton) REFERENCES Direccion.Cantones(IdCanton) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 --1. TABLA TiposCirculacion
@@ -108,7 +108,7 @@ CREATE TABLE AccidentesTran.Accidentes(
 	Fecha DATE NOT NULL DEFAULT(CURRENT_DATE),
 	CONSTRAINT PK_Id_Accidentes PRIMARY KEY(Id),
 	CONSTRAINT FK_IdTipoLesion_Accidentes FOREIGN KEY(IdTipoLesion) 
-	REFERENCES DetallesAccidentes.TiposLesiones ON DELETE CASCADE ON UPDATE CASCADE
+	REFERENCES DetallesAccidentes.TiposLesiones(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE AccidentesTran.AccidentesPersonas(
@@ -117,16 +117,16 @@ CREATE TABLE AccidentesTran.AccidentesPersonas(
 	Sexo  BOOLEAN NOT NULL DEFAULT(TRUE),
 	IdRolPersona SMALLINT NOT NULL,
 	CONSTRAINT PK_IdAccidente_AccidentesPersonas PRIMARY KEY(IdAccidente),
-	CONSTRAINT FK_IdAccidente_AccidentesPersonas FOREIGN KEY(IdAccidente) REFERENCES AccidentesTran.Accidentes ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT FK_IdRolPersona_AccidentesPersonas FOREIGN KEY (IdRolPersona) REFERENCES DetallesAccidentes.RolesPersonas ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT FK_IdAccidente_AccidentesPersonas FOREIGN KEY(IdAccidente) REFERENCES AccidentesTran.Accidentes(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_IdRolPersona_AccidentesPersonas FOREIGN KEY (IdRolPersona) REFERENCES DetallesAccidentes.RolesPersonas(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE AccidentesTran.Heridos(
 	IdAccidente INT NOT NULL,
 	IdDistrito SMALLINT NOT NULL,
 	CONSTRAINT PK_IdAccidente_Heridos PRIMARY KEY (IdAccidente),
-	CONSTRAINT FK_IdAccidente_Heridos FOREIGN KEY(IdAccidente) REFERENCES AccidentesTran.AccidentesPersonas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT FK_IdDistrito_Heridos FOREIGN KEY (IdDistrito)REFERENCES Direccion.Distritos ON DELETE CASCADE ON UPDATE CASCADE	
+	CONSTRAINT FK_IdAccidente_Heridos FOREIGN KEY(IdAccidente) REFERENCES AccidentesTran.AccidentesPersonas(IdAccidente) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_IdDistrito_Heridos FOREIGN KEY (IdDistrito)REFERENCES Direccion.Distritos(IdDistrito) ON DELETE CASCADE ON UPDATE CASCADE	
 );
 
 CREATE TABLE AccidentesTran.Fallecidos(
@@ -137,10 +137,10 @@ CREATE TABLE AccidentesTran.Fallecidos(
 	IdTipoAccidente SMALLINT NOT NULL,
 	IdRuta SMALLINT NOT NULL,
 	CONSTRAINT PK_IdAccidente_Fallecidos PRIMARY KEY (IdAccidente),
-	CONSTRAINT FK_IdAccidente_Fallecidos FOREIGN KEY (IdAccidente) REFERENCES AccidentesTran.AccidentesPersonas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT FK_IdCanton_Fallecidos FOREIGN KEY(IdCanton) REFERENCES Direccion.Cantones ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT FK_IdTipoAccidente_Fallecidos FOREIGN KEY (IdTipoAccidente) REFERENCES DetallesAccidentes.TiposAccidentes ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT FK_IdRuta_Fallecidos FOREIGN KEY (IdRuta) REFERENCES DetallesAccidentes.KilometrosRutas ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT FK_IdAccidente_Fallecidos FOREIGN KEY (IdAccidente) REFERENCES AccidentesTran.AccidentesPersonas(IdAccidente) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_IdCanton_Fallecidos FOREIGN KEY(IdCanton) REFERENCES Direccion.Cantones(IdCanton) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_IdTipoAccidente_Fallecidos FOREIGN KEY (IdTipoAccidente) REFERENCES DetallesAccidentes.TiposAccidentes(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_IdRuta_Fallecidos FOREIGN KEY (IdRuta) REFERENCES DetallesAccidentes.KilometrosRutas(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE AccidentesTran.AccidentesGenerales(
@@ -161,14 +161,14 @@ CREATE TABLE AccidentesTran.AccidentesGenerales(
 	CONSTRAINT  PK_IdAccidente_AccidentesGenerales  PRIMARY KEY(IdAccidente),
 	CONSTRAINT  CHK_AreaGeografica_AccidentesGenerales  CHECK(AreaGeografica IN ('R','U','O')),
 	CONSTRAINT  CHK_TipoRuta_AccidentesGenerales CHECK(TipoRuta IN ('N','C','D')),
-	CONSTRAINT  FK_IdDistrito_AccidentesGenerales FOREIGN KEY (IdDistrito) REFERENCES Direccion.Distritos ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdAccidente_AccidentesGenerales FOREIGN KEY (IdAccidente) REFERENCES AccidentesTran.Accidentes ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdTipoCirculacion_AccidentesGenerales FOREIGN KEY (IdTipoCirculacion) REFERENCES DetallesAccidentes.TiposCirculacion ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdEstadoTiempo_AccidentesGenerales FOREIGN KEY (IdEstadoTiempo) REFERENCES DetallesAccidentes.EstadosTiempo ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdTipoCalzada_AccidentesGenerales FOREIGN KEY (IdTipoCalzada) REFERENCES DetallesAccidentes.TiposCalzadas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdDescripcionCalzadaVertical_AccidentesGenerales FOREIGN KEY (IdDescripcionCalzadaVertical) REFERENCES DetallesAccidentes.DescripcionesCalzadas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdDescripcionCalzadaHorizontal_AccidentesGenerales FOREIGN KEY (IdDescripcionCalzadaHorizontal) REFERENCES DetallesAccidentes.DescripcionesCalzadas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdTipoAccidente_AccidentesGenerales FOREIGN KEY (IdTipoAccidente) REFERENCES DetallesAccidentes.TiposAccidentes ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdKilometro_AccidentesGenerales FOREIGN KEY (IdKilometro) REFERENCES DetallesAccidentes.KilometrosRutas ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT  FK_IdRuta_AccidentesGenerales FOREIGN KEY (IdRuta) REFERENCES DetallesAccidentes.KilometrosRutas ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT  FK_IdDistrito_AccidentesGenerales FOREIGN KEY (IdDistrito) REFERENCES Direccion.Distritos(IdDistrito) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdAccidente_AccidentesGenerales FOREIGN KEY (IdAccidente) REFERENCES AccidentesTran.Accidentes(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdTipoCirculacion_AccidentesGenerales FOREIGN KEY (IdTipoCirculacion) REFERENCES DetallesAccidentes.TiposCirculacion(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdEstadoTiempo_AccidentesGenerales FOREIGN KEY (IdEstadoTiempo) REFERENCES DetallesAccidentes.EstadosTiempo(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdTipoCalzada_AccidentesGenerales FOREIGN KEY (IdTipoCalzada) REFERENCES DetallesAccidentes.TiposCalzadas(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdDescripcionCalzadaVertical_AccidentesGenerales FOREIGN KEY (IdDescripcionCalzadaVertical) REFERENCES DetallesAccidentes.DescripcionesCalzadas(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdDescripcionCalzadaHorizontal_AccidentesGenerales FOREIGN KEY (IdDescripcionCalzadaHorizontal) REFERENCES DetallesAccidentes.DescripcionesCalzadas(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdTipoAccidente_AccidentesGenerales FOREIGN KEY (IdTipoAccidente) REFERENCES DetallesAccidentes.TiposAccidentes(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdKilometro_AccidentesGenerales FOREIGN KEY (IdKilometro) REFERENCES DetallesAccidentes.KilometrosRutas(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT  FK_IdRuta_AccidentesGenerales FOREIGN KEY (IdRuta) REFERENCES DetallesAccidentes.KilometrosRutas(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );

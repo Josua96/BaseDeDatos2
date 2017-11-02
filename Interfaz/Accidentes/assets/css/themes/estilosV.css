@@ -1,0 +1,207 @@
+/*
+Accidentes transito
+
+*/
+
+#gestion{
+    cursor: default;
+    padding-top: 10%;
+
+}
+
+#gestion li:hover {
+    background-color: snow;
+    text-decoration: underline;
+}
+#gestion li{
+
+    padding-top: 40px;
+}
+
+
+/*navbar */
+#barraMenu{
+
+    cursor: default;
+    position: fixed;
+}
+
+
+#barraMenu ul{
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+}
+#barraMenu ul li{
+    float: left;
+    width: 200px;
+    height: 40px;
+    border: 1px solid white;
+    background-color:#3C3E94;
+    opacity: 0.8;
+    line-height: 40px;
+    text-align:center;
+    font-size: 20px;
+    color: white;
+    position: relative;
+}
+
+#barraMenu ul li:hover {
+    background-color:#388222;
+}
+
+#barramenu li:hover{
+    text-decoration: underline;
+}
+
+#barraMenu ul ul {
+    display: none;
+}
+
+
+#barraMenu ul li:hover > ul  {
+    display: block;
+}
+#barraMenu ul  ul  ul{
+    margin-left: 200px;
+    top:0px;
+    position: absolute;
+}
+#barraMenu ul li ul li ul li:hover{
+    background-color: darkslategrey;
+}
+/*
+#barraMenu ul li:hover  ul li:hover ul{
+    display: block;
+}
+*/
+
+/*make navigation responsive
+
+*/
+
+@media screen and (max-width: 500px) {
+
+    #barraMenu ul{
+        padding: 0;
+    }
+    #barraMenu ul li{
+        display: block;
+        padding: 4px;
+        background-color: #1a237e;
+        margin: 5px 0;
+    }
+}
+
+.menuEmergente{
+    position: relative;
+    display: block;
+}
+
+.listaNavegador{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+
+}
+.elemento{
+    float: left;
+}
+
+.contenido{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+
+}
+.contenido select{
+    text-decoration: none;
+    display: block;
+    font-size: medium;
+}
+
+.contenido select:hover{background-color: #f1f1f1}
+
+.areaDeTexto{
+    resize: none;
+
+}
+
+.exhibidores{
+    font-family: "Arial Narrow","Times New Roman";
+    font-size: large;
+    color: black;
+
+}
+
+.fuente{
+    font-family: "Arial Narrow","Times New Roman";
+    color: black;
+
+}
+
+.but{
+    background-color: #97ABF5;
+    width: 100px;
+    height: 30px;
+    color: black;
+}
+
+
+.atras{
+    background-color:#f44336;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    border-radius: 10%;
+    width: 10%;
+    height: 4%;
+}
+
+.buttonBlue{
+    background-color: #008CBA;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    border-radius: 10%;
+    width: 10%;
+    height: 4%;
+}
+
+.buttonObtener{
+    background-color: #008CBA;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    border-radius: 10%;
+    width: 15%;
+    height: 4%;
+}
+
+#tinforme td{
+    padding-left: 6px;
+}
+
+.filaCentrada{
+    text-align: center;
+}
+
+.textInformes{
+
+    text-decoration: none;
+}
+@media (max-width: 400px) {
+    .textInformes {
+        margin-top:-10%;
+    }
+}
+
+.imagenes{
+    width:100px;
+}

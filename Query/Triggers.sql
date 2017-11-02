@@ -37,13 +37,7 @@ $BODY$
 LANGUAGE plpgsql;
 	
 
-/**  */
 
-CREATE TRIGGER trigger_insert_provincias 
-BEFORE INSERT 
-ON Direccion.Provincias
-FOR EACH ROW 
-EXECUTE PROCEDURE validar_insert_provincias();
 
 CREATE OR REPLACE FUNCTION validar_insert_provincias() 
 RETURNS TRIGGER
@@ -58,6 +52,12 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
+
+CREATE TRIGGER trigger_insert_provincias 
+BEFORE INSERT 
+ON Direccion.Provincias
+FOR EACH ROW 
+EXECUTE PROCEDURE validar_insert_provincias();
 
 CREATE TRIGGER trigger_insertCantones
 BEFORE INSERT 
@@ -174,9 +174,6 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-select * from Direccion.Cantones
-select borrar_provincia(1);
-select borrar_cantones(327);
 
 
 /**
@@ -244,6 +241,7 @@ BEGIN
 	RETURN NEW;
 END;
 $BODY$
+LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_insertAccidentes
 BEFORE INSERT
