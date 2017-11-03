@@ -1,0 +1,18 @@
+<center>
+
+    <div style="padding-top: 10%">
+        <label style="font-size: x-large"> Sección de eliminación de tipos de accidentes </label>
+        <br>
+        <br>
+        <label style="font-size: x-large"> Tipos de accidentes registrados </label>
+        <br>
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <br>
+        <button class="btn btn-info" ng-click="eliminarTipoAccidente()"> Eliminar </button>
+
+    </div>
+</center>

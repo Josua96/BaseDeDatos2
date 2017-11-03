@@ -54,8 +54,7 @@ angular.module('adminModule')
 
         /*
         ==========================================
-
-        Endpoints esuqema Detalles Accidentes
+        Endpoints esquema Detalles Accidentes
         ==========================================
          */
         this.insertar=function (endpointName,nombre) {
