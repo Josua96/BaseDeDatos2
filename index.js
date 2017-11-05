@@ -13,6 +13,7 @@ var async = require('async');
 >   Función encargada de la inserción de Fallecidos en la BD desde un archivo JSON exportado desde la  API de COSEV   <
 =======================================================================================================================
 */
+
 function extraerFallecidos(){
     client.connect();
     console.log("\n\nInsertando información de Fallecidos en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
@@ -146,6 +147,6 @@ function extraerPersonasAccidentes(){
 >   Llamado de las funciones para que procedan con la extracción de la información   <
 ======================================================================================
 */
-//extraerAccidentes();
-extraerPersonasAccidentes();
+extraerAccidentes();
+//extraerPersonasAccidentes();
 //extraerFallecidos();

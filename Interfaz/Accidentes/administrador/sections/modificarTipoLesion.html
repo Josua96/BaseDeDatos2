@@ -1,0 +1,21 @@
+<center>
+
+    <div style="padding-top: 8%">
+        <label style="font-size: x-large"> Tipos de lesiones Registrados </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nuevo nombre para el tipo de lesión </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="modificarTipoLesion()"> Realizar modificación </button>
+
+    </div>
+</center>

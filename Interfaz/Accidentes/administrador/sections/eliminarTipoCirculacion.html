@@ -1,0 +1,17 @@
+<center>
+
+    <div style="padding-top: 8%">
+        <label style="font-size: x-large"> Tipos de circulación Registrados </label>
+        <br>
+        <br>
+        <label style="font-size: x-large">Seleccione el tipo de circulación a eliminar </label>
+        <br>
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <button class="btn btn-info" ng-click="eliminarTipoCirculacion()"> Eliminar tipo de circulación </button>
+
+    </div>
+</center>

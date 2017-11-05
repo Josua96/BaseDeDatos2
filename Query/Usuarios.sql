@@ -9,6 +9,7 @@ CREATE USER administrador WITH LOGIN PASSWORD 'admin123';
 ALTER USER administrador WITH SUPERUSER;
 SELECT rolname, rolsuper FROM pg_roles;
 
+
 /**
 
 	un usuario normal,
@@ -19,6 +20,12 @@ SELECT rolname, rolsuper FROM pg_roles;
 drop user normal
 	
 	CREATE USER normal WITH LOGIN PASSWORD 'normal12';
+
+	Alter user normal set search_path to DetallesAccidentes;
+	Alter user normal set search_path to AccidentesTran;
+	--GRANT ALL PRIVILEGES ON SCHEMA DetallesAccidentes to normal
+	--REVOKE ALL PRIVILEGES ON SCHEMA DetallesAccidentes from normal
+	
 	GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA DetallesAccidentes TO normal;
 	GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA AccidentesTran TO normal;
 	GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA Direccion TO normal;
@@ -41,15 +48,15 @@ drop user normal
 	Un usuario respaldo que
 	solo podrá realizar respaldo de base de datos		
 */
-drop user backupUser
+drop user backup
 	CREATE USER backup WITH LOGIN PASSWORD 'backup123';
 --	GRANT CONNECT ON DATABASE AccidentesTransito TO backupUser; --permitir conexion del usuario
 	REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA
-	DetallesAccidentes FROM backupUser;
+	DetallesAccidentes FROM backup;
 	REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA
-	AccidentesTran FROM backupUser;
+	AccidentesTran FROM backup;
 	REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA
-	Direccion FROM backupUser
+	Direccion FROM backup
 	--Permisos de lectura únicamente
 	GRANT SELECT ON ALL TABLES IN SCHEMA DetallesAccidentes TO backup;
 	GRANT SELECT ON ALL TABLES IN SCHEMA AccidentesTran TO backup;
@@ -62,4 +69,12 @@ drop user backupUser
 	ALTER DEFAULT PRIVILEGES IN SCHEMA Direccion
 	GRANT SELECT ON TABLES TO backup;
 	REVOKe
+
+	ALTER DEFAULT PRIVILEGES IN SCHEMA DetallesAccidentes
+	Revoke SELECT ON TABLES from backup;
+	ALTER DEFAULT PRIVILEGES IN SCHEMA AccidentesTran
+	revoke SELECT ON TABLES from backup;
+	ALTER DEFAULT PRIVILEGES IN SCHEMA Direccion
+	revoke SELECT ON TABLES from backup;
+	
 	

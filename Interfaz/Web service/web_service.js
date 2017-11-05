@@ -739,7 +739,7 @@ app.post('/insertarTipoCirculacion', function(req, res) {
 app.post('/modificarTipoCirculacion', function(req, res) {
 	
 	db.func('modificar_TiposCirculacion',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -810,7 +810,7 @@ app.post('/insertarEstadoTiempo', function(req, res) {
 app.post('/modificarEstadoTiempo', function(req, res) {
 	
 	db.func('modificar_estadoTiempo',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -879,7 +879,7 @@ app.post('/insertarTipoCalzada', function(req, res) {
 app.post('/modificarTipoCalzada', function(req, res) {
 	
 	db.func('modificar_tiposCalzadas',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -948,7 +948,7 @@ app.post('/insertarDescripcionCalzada', function(req, res) {
 app.post('/modificarDescripcionCalzada', function(req, res) {
 	
 	db.func('modificar_descripcionCalzada',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -999,7 +999,7 @@ app.get('/obtenerDescripcionesCalzadas', function(req, res) {
 app.post('/insertarTipoLesion', function(req, res) {
 	
 	db.func('insertar_tiposLesiones',
-		[req.query.tipo])
+		[req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -1017,7 +1017,7 @@ app.post('/insertarTipoLesion', function(req, res) {
 app.post('/modificarTipoLesion', function(req, res) {
 	
 	db.func('modificar_tiposLesiones',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -1086,7 +1086,7 @@ app.post('/insertarKilometroRuta', function(req, res) {
 app.post('/modificarKilometroRuta', function(req, res) {
 	
 	db.func('modificar_kilometrosRutas',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -1155,7 +1155,7 @@ app.post('/insertarTipoAccidente', function(req, res) {
 app.post('/modificarTipoAccidente', function(req, res) {
 	
 	db.func('modificar_tiposAccidente',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));
@@ -1224,7 +1224,7 @@ app.post('/insertarRolPersona', function(req, res) {
 app.post('/modificarRolPersona', function(req, res) {
 	
 	db.func('modificar_rolesPersonas',
-		[,req.query.id,req.query.valor])
+		[req.query.id,req.query.valor])
 	.then(data => {
 		console.log(data);
 		res.end(JSON.stringify(true));

@@ -135,7 +135,14 @@ function mostrarNotificacion(texto,num)
  
   else
   {
-    swal(texto);
+      swal({ //
+          title: texto,
+          type: "warning",
+          confirmButtonColor: "#27F034",
+          timer: 2000,
+          showConfirmButton: false
+      });  
+    
   }
 }
 

@@ -7,7 +7,7 @@ CREATE TABLE Direccion.Provincias
 	IdProvincia		SMALLSERIAL	NOT NULL,
 	NombreProvincia		VARCHAR(50)	NOT NULL	UNIQUE,
 	CONSTRAINT PK_IdProvincia_Provincias	PRIMARY KEY (IdProvincia)
-);s
+);
 
 CREATE TABLE Direccion.Cantones
 (
