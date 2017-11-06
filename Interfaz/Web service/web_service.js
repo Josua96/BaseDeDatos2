@@ -1,9 +1,8 @@
-/*
-*     Web Service REST para la BD Devesa
+﻿/*
+*     Web Service REST para la BD Accidentes Transito
 *
-* Autor: Edward Andrey Murillo Castro | 2015027610
-* Contacto: m.edwardandrey@gmail.com, m.edwardandrey@yahoo.com, eamc96@estudiantec.cr
-* Última Fecha de Modificación: 31/03/2017
+* Autor: Josua Carranza | 2016------
+* Contacto: ---@gmail.com, ---, ---@estudiantec.cr
 *
 */
 
@@ -105,8 +104,7 @@ app.post('/insertarProvincia', function(req, res) {
       		console.log("ERROR: ",error);
       		res.status(400).send(
       			{message:'No fue posible realizar la insercion'});
-    	})
-	
+    	})	
 })
 
 app.post('/modificarProvincia', function(req, res) {

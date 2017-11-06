@@ -1,0 +1,80 @@
+<center>
+    <label style="font-size: x-large"> Inserción de accidentes generales </label>
+</center>
+
+<div style="display: flex">
+    <div style="padding-top: 4%; order:1; padding-left: 10%;">
+
+        <h4>Ingrese la hora de inicio del accidente    </h4><input type="time" id="horaInicio">
+
+        <h4>Ingrese la hora final del accidente   </h4> <input type="time" id="horaFinal">
+
+        <h4>Seleccione el area geografica</h4>
+        <select class="form-control" id="areaGeografica" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione la provincia donde ocurrio el accidente</h4>
+        <select class="form-control" id="provincia" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el canton donde ocurrio el accidente</h4>
+        <select class="form-control" id="canton" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione distrito donde ocurrio el accidente</h4>
+        <select class="form-control" id="distrito" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el tipo de ruta en la que ocurrio el accidente</h4>
+        <select class="form-control" id="tipoRuta" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+
+    </div>
+
+    <div style="padding-top: 4%; order:2; padding-left: 10%">
+        <h4>Seleccione el tipo de circulacion de como ocurrio el accidente</h4>
+        <select class="form-control" id="tipoCirculacion" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el estado del tiempo de cuando ocurrio el accidente</h4>
+        <select class="form-control" id="estadoTiempo" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el tipo de la calzada donde ocurrio el accidente</h4>
+        <select class="form-control" id="tipoCalzada" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione la descripcion de la calzada horizontal donde ocurrio el accidente</h4>
+        <select class="form-control" id="descripcionCalzadaHorizontal" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el tipo de accidente</h4>
+        <select class="form-control" id="tipoAccidente" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione el kilometro donde ocurrio el accidente</h4>
+        <select class="form-control" id="kilometro" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+
+        <h4>Seleccione la ruta donde ocurrio el accidente</h4>
+        <select class="form-control" id="ruta" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados">{{x.model}}</option>
+        </select>
+    </div>
+</div>
+
+<center>
+    <button class="btn btn-info" ng-click="modificarKilometroRuta()">Modificar</button>
+</center>

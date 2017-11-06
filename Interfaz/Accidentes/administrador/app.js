@@ -117,5 +117,15 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
             templateUrl:"sections/eliminarKilometroRuta.html",
             controller:'gestionkilometrorutaCtrl'
         })
+
+        // accidentes generales
+        .when("/accidentesGenerales",{
+            templateUrl:"sections/gestionaccidentesgenerales.html",
+            controller:'gestionaccidentesgeneralesCtrl'
+        })
+        .when("/insertarAccidenteGeneral",{
+            templateUrl:"sections/insertarAccidenteGeneral.html",
+            controller:'gestionaccidentesgeneralesCtrl'
+        })
     }
 ]);

@@ -47,7 +47,6 @@ function extraerFallecidos(){
                     message: "successful insertions on Fallecidos table."
                 });
             });
-            console.log("\nFinalización con la inserción de fallecidos.\n\n");
         }
         else{
             console.log("Ocurrió un error durante la inserción de los datos.");
@@ -113,7 +112,7 @@ function extraerPersonasAccidentes(){
     distrito = '';
 
     var object = require("./PersonasAccidentes.json");
-    console.log(object.length);
+    //console.log(object.length);
     async.forEach(object, function(element, callback) {
         rol = element[1];
         tipoLesion = element[2];
@@ -137,6 +136,7 @@ function extraerPersonasAccidentes(){
             message: "successful insertions on Heridos table."
         });
     });
+    console.log("Datos ingresados de manera correcta.");
 }
 
 /*
