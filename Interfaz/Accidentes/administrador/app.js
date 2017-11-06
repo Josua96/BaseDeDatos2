@@ -139,7 +139,24 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                     controller:'gestiontiposlesionesCtrl'
                 })
 
+                .when("/tiposCalzada",{
+                    templateUrl:'sections/gestiontiposcalzada.html',
+                    controller:'gestiontiposcalzadaCtrl'
+                })
 
+                .when("/insertarTipoCalzada",{
+                templateUrl:'sections/insertarTipoCalzada.html',
+                controller:'gestiontiposcalzadaCtrl'
+                })
+            
+                .when("/modificarTipoCalzada",{
+                    templateUrl:'sections/modificarTipoCalzada.html',
+                    controller:'gestiontiposcalzadaCtrl'
+                })
+                .when("/eliminarTipoCalzada",{
+                    templateUrl:'sections/eliminarTipoCalzada.html',
+                    controller:'gestiontiposcalzadaCtrl'
+                })
 
                 // tipo accidente
                 .when("/tiposAccidente",{
@@ -166,15 +183,15 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                 })
                 .when("/insertarRolPersona",{
                     templateUrl:"sections/insertarRolPersona.html",
-                    controller:'gestionrolpersonaCtrl'
+                    controller:'gestionrolespersonaCtrl'
                 })
                 .when("/modificarRolPersona",{
                     templateUrl:"sections/modificarRolPersona.html",
-                    controller:'gestionrolpersonaCtrl'
+                    controller:'gestionrolespersonaCtrl'
                 })
                 .when("/eliminarRolPersona",{
                     templateUrl:"sections/eliminarRolPersona.html",
-                    controller:'gestionrolpersonaCtrl'
+                    controller:'gestionrolespersonaCtrl'
                 })
 
                 /// rol persona
@@ -195,5 +212,9 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                     controller:'gestionkilometrorutaCtrl'
                 })
 
+                .when("/insertarHeridos",{
+                    templateUrl:"sections/insercionHeridos.html",
+                    controller:'insercionheridosCtrl'
+                })
     }
 ]);

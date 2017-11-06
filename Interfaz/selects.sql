@@ -20,6 +20,22 @@ select * from DetallesAccidentes.TiposCirculacion
 
 select * from DetallesAccidentes.EstadosTiempo
 
-select * from DetallesAccidentes.DescripcionesCalzadas
+select * from DetallesAccidentes.TiposCalzadas
 
 select * from DetallesAccidentes.TiposLesiones
+
+select * from DetallesAccidentes.TiposCalzada
+
+select * from DetallesAccidentes.KilometrosRutas
+
+select * from AccidentesTran.AccidentesPersonas
+
+select * from AccidentesTran.Accidentes
+
+
+select * from AccidentesTran.AccidentesGenerales
+
+
+select * from AccidentesTran.Fallecidos
+
+select * from AccidentesTran.Heridos

@@ -111,6 +111,7 @@ CREATE TABLE AccidentesTran.Accidentes(
 	REFERENCES DetallesAccidentes.TiposLesiones(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- true es hombre false mujer
 CREATE TABLE AccidentesTran.AccidentesPersonas(
 	IdAccidente INT NOT NULL,
 	Edad SMALLINT NOT NULL DEFAULT (0),

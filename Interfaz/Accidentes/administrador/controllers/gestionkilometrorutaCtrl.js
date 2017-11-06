@@ -44,7 +44,7 @@ angular.module('adminModule').controller('gestionkilometrorutaCtrl', function($s
             var indice=document.getElementById('selec').selectedIndex;
             
             //enviar id del kilometro-ruta seleccionada y el nuevo nombre de la misma
-            peticiones.modificar("modificarKilometroRuta",$scope.provincias[indice].id, nom)
+            peticiones.modificar("modificarKilometroRuta",$scope.registrados[indice].id, nom)
                 .then(function (response) {
                     
                     mostrarNotificacion("La información del kilometro-ruta fue modificada con éxito", 2);
@@ -62,14 +62,11 @@ angular.module('adminModule').controller('gestionkilometrorutaCtrl', function($s
     };
     
      $scope.seleccionarKilometroRuta=function () {
-         if ($scope.provincias.length == 0){
-             window.location.href = ('#/cantones');
-             mostrarNotificacion("No existen kilometro-ruta registrados en el sistema",1);
-         }
+
          peticiones.seleccionar("obtenerKilometrosRutas")
              .then(function (response) {
                  console.log(response);
-                 $scope.provincias=recorrerRespuesta(response.data,"v_nombreprovincia","v_id");
+                 $scope.registrados=recorrerRespuesta(response.data,"v_kilometroruta","v_id");
              }, function (response) {
                  mostrarNotificacion("Error en la carga del kilometro-ruta", 1);
                  console.log("respuesta negativa");
@@ -83,7 +80,7 @@ angular.module('adminModule').controller('gestionkilometrorutaCtrl', function($s
             .then(function (response) {
                 console.log(response);
                 mostrarNotificacion("El kilometro-ruta ha sido eliminado",2);
-                $scope.provincias.splice(indice,1); //actualizar el select
+                $scope.registrados.splice(indice,1); //actualizar el select
                 
             }, function (response) {
                 mostrarNotificacion("Error en la eliminación del kilometro-ruta", 1);

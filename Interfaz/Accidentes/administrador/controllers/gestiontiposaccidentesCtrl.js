@@ -70,7 +70,7 @@ angular.module('adminModule').controller('gestiontiposaccidentesCtrl', function(
                 console.log("tipos de accidentes obtenidos");
                 console.log(response);
                 //guardar los datos en el arreglo de registrados
-                $scope.registrados=recorrerRespuesta(response.data,"v_tipocirculacion","v_id");
+                $scope.registrados=recorrerRespuesta(response.data,"v_tipoaccidente","v_id");
 
                 if ($scope.registrados.length==0){
                     mostrarNotificacion("No existen tipos de accidente registrados en el sistema",3);

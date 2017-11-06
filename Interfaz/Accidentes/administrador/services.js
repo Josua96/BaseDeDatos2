@@ -71,7 +71,21 @@ angular.module('adminModule')
                 url: API_ROOT + "obtenerDistritos?idcanton="+idCanton+"&iddistrito="+idDistrito+"&nombre="+nombre
             });
         };
-        
+
+        /*
+         ==========================================
+         Endpoints esquema ACCIDENTES TRAN
+         ==========================================
+         */
+
+        this.insertarAccidente=function (lesion,fecha) {
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertarAccidente?idtipolesion="+lesion+"&fecha="+fecha
+            });
+        };
+
+
         /*
         ==========================================
         Endpoints esquema Detalles Accidentes

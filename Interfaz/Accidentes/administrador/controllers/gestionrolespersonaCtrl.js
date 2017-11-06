@@ -71,7 +71,7 @@ angular.module('adminModule').controller('gestionrolespersonaCtrl', function($sc
                 console.log("roles de persona obtenidos");
                 console.log(response);
                 //guardar los datos en el arreglo de registrados
-                $scope.registrados=recorrerRespuesta(response.data,"v_tipocirculacion","v_id");
+                $scope.registrados=recorrerRespuesta(response.data,"v_rolpersona","v_id");
 
                 if ($scope.registrados.length==0){
                     mostrarNotificacion("No existen roles de persona registrados en el sistema",3);
