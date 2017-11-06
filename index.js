@@ -7,15 +7,20 @@ const pg = require('pg'); //postgres controller
 const conString = "postgres://postgres:12345@localhost:5432/AccidentesTransito"; //connection link
 const client = new pg.Client(conString);
 var async = require('async');
+client.connect();
 
 /*
 =======================================================================================================================
 >   Función encargada de la inserción de Fallecidos en la BD desde un archivo JSON exportado desde la  API de COSEV   <
 =======================================================================================================================
 */
+<<<<<<< HEAD
 
 function extraerFallecidos(){
     client.connect();
+=======
+function extraerFallecidos(){    
+>>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007
     console.log("\n\nInsertando información de Fallecidos en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
     var request = require('request');
     request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/REGIS-DE-FALLE-EN-SITIO/data.ajson/?auth_key=7c23534c30d3fd449f1bd5638363c17b89b7617e', 
@@ -53,7 +58,8 @@ function extraerFallecidos(){
         else{
             console.log("Ocurrió un error durante la inserción de los datos.");
         }
-    });    
+    });   
+    extraerAccidentes(); 
 }
 
 /*
@@ -62,7 +68,6 @@ function extraerFallecidos(){
 ========================================================================================================================
 */
 function extraerAccidentes(){
-    client.connect();
     var claseAccidente = '', tipoAccidente = '', anio = '', mes = '', dia = '', hora = '', provincia = '', canton = '', 
     distrito = '', ruta = '', kilometro = '', tipoRuta = '', ruralUbano = '', calzadaVertical = '', calzadaHorizontal = '', 
     tipoCalzada = '', estadoTiempo = '', tipoCirculacion = '';
@@ -100,8 +105,8 @@ function extraerAccidentes(){
             success: true,
             message: "successful insertions on Accidents table."
         });
-    });    
-    console.log("\nFinalización con la inserción de accidentes.\n\n");
+    });
+    extraerPersonasAccidentes();
 }
 
 /*
@@ -110,7 +115,6 @@ function extraerAccidentes(){
 ===================================================================================================================================
 */
 function extraerPersonasAccidentes(){
-    client.connect();
     var rol = '', tipoLesion = '', edad = '', sexo = '', anio = '', mes = '', dia = '', provincia = '', canton = '', 
     distrito = '';
 
@@ -138,8 +142,7 @@ function extraerPersonasAccidentes(){
             success: true,
             message: "successful insertions on Heridos table."
         });
-    });    
-    console.log("\nFinalización con la inserción de personas accidentadas.\n\n");
+    });
 }
 
 /*
@@ -147,6 +150,10 @@ function extraerPersonasAccidentes(){
 >   Llamado de las funciones para que procedan con la extracción de la información   <
 ======================================================================================
 */
+<<<<<<< HEAD
 extraerAccidentes();
 //extraerPersonasAccidentes();
 //extraerFallecidos();
+=======
+extraerFallecidos();
+>>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007

@@ -1,6 +1,7 @@
 angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
 .config(['$routeProvider',function($routeProvider)
     {
+
         $routeProvider.when("/provincias",{
                 templateUrl:'sections/gestionprovincias.html',
                 controller: 'gestionprovinciasCtrl'
@@ -137,5 +138,62 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                     templateUrl:'sections/eliminarTipoLesion.html',
                     controller:'gestiontiposlesionesCtrl'
                 })
+
+
+
+                // tipo accidente
+                .when("/tiposAccidente",{
+                    templateUrl:"sections/gestiontiposaccidentes.html",
+                    controller:'gestiontiposaccidentesCtrl'
+                })
+                .when("/insertarTipoAccidente",{
+                    templateUrl:"sections/insertarTipoAccidente.html",
+                    controller:'gestiontiposaccidentesCtrl'
+                })
+                .when("/modificarTipoAccidente",{
+                    templateUrl:"sections/modificarTipoAccidente.html",
+                    controller:'gestiontiposaccidentesCtrl'
+                })
+                .when("/eliminarTipoAccidente",{
+                    templateUrl:"sections/eliminarTipoAccidente.html",
+                    controller:'gestiontiposaccidentesCtrl'
+                })
+
+                /// rol persona
+                .when("/rolPersona",{
+                    templateUrl:"sections/gestionrolespersona.html",
+                    controller:'gestionrolespersonaCtrl'
+                })
+                .when("/insertarRolPersona",{
+                    templateUrl:"sections/insertarRolPersona.html",
+                    controller:'gestionrolpersonaCtrl'
+                })
+                .when("/modificarRolPersona",{
+                    templateUrl:"sections/modificarRolPersona.html",
+                    controller:'gestionrolpersonaCtrl'
+                })
+                .when("/eliminarRolPersona",{
+                    templateUrl:"sections/eliminarRolPersona.html",
+                    controller:'gestionrolpersonaCtrl'
+                })
+
+                /// rol persona
+                .when("/kilometroRuta",{
+                    templateUrl:"sections/gestionkilometroruta.html",
+                    controller:'gestionkilometrorutaCtrl'
+                })
+                .when("/insertarKilometroRuta",{
+                    templateUrl:"sections/insertarKilometroRuta.html",
+                    controller:'gestionkilometrorutaCtrl'
+                })
+                .when("/modificarKilometroRuta",{
+                    templateUrl:"sections/modificarKilometroRuta.html",
+                    controller:'gestionkilometrorutaCtrl'
+                })
+                .when("/eliminarKilometroRuta",{
+                    templateUrl:"sections/eliminarKilometroRuta.html",
+                    controller:'gestionkilometrorutaCtrl'
+                })
+
     }
 ]);

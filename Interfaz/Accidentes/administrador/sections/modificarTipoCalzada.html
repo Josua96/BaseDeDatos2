@@ -1,0 +1,21 @@
+<center>
+
+    <div style="padding-top: 10%">
+        <label style="font-size: x-large"> Tipos de Calzada Registrados </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados"> {{x.model}}</option>
+        </select>
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nuevo nombre del tipo de calzada </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="modificarTipoCalzada()"> Realizar modificación </button>
+
+    </div>
+</center>
