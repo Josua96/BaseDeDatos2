@@ -216,5 +216,10 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                     templateUrl:"sections/insercionHeridos.html",
                     controller:'insercionheridosCtrl'
                 })
+
+                .when("/insertarFallecidos",{
+                    templateUrl:"sections/insercionFallecidos.html",
+                    controller:'insercionfallecidosCtrl'
+                })
     }
 ]);

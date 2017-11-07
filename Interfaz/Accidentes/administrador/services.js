@@ -78,14 +78,23 @@ angular.module('adminModule')
          ==========================================
          */
 
-        this.insertarAccidente=function (lesion,fecha) {
+        this.insertarFallecido=function (fecha,rol,edad,sexo,canton,inicio,final,tipoAccidente,ruta) {
             return $http({
                 method: "POST",
-                url: API_ROOT + "insertarAccidente?idtipolesion="+lesion+"&fecha="+fecha
+                url: API_ROOT + "insertarFallecido?fecha="+fecha
+                +"&idRolPersona="+rol+"&edad="+edad+"&sexo="+sexo+"&idCanton="+canton+
+                    "&horaInicio="+inicio+"&horaFinal="+final+"&idTipoAccidente="+tipoAccidente+"&idRuta="+ruta  
+                    
             });
         };
 
-
+        this.insertarHerido=function (lesion,fecha,rol,edad,sexo,distrito) {
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertarHerido?idTipoLesion="+lesion+"&fecha="+fecha
+                +"&idRolPersona="+rol+"&edad="+edad+"&sexo="+sexo+"&idDistrito="+distrito
+            });
+        };
         /*
         ==========================================
         Endpoints esquema Detalles Accidentes

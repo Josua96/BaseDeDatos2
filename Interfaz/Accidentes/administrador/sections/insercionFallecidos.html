@@ -1,14 +1,15 @@
 <center>
-<label style="font-size: x-large"> Secció de inserción de accidentes con heridos </label>
-<br>
-<label style="font-size: x-large"> Seleccione las opciones requeridas </label>
+    <label style="font-size: x-large"> Secció de inserción de accidentes con Fallecidos </label>
+    <br>
+    <label style="font-size: x-large"> Seleccione las opciones requeridas </label>
 </center>
 
 <div class="container-fluid" style="padding-top:2%;display: flex;">
     <div class="container-fluid" style="order: 1; margin-left: 10%">
-        <label style="font-size: x-large">  Tipo de lesión </label>
-        <select class="form-control" id="lesion" style="font-size: medium;width: 300px;">
-            <option  ng-repeat="x in lesiones" > {{x.model}}</option>
+        <label style="font-size: x-large">  Tipo de Accidente </label>
+
+        <select class="form-control" id="tipo" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
+            <option  ng-repeat="x in tiposAccidentes" > {{x.model}}</option>
         </select>
 
         <label style="font-size: x-large">  Fecha del accidente </label>
@@ -31,11 +32,15 @@
             <option > Femenino </option>
         </select>
 
+        <label style="font-size: x-large">  Hora de inicio del accidente </label>
+        <input type="time" id="horaInicio" value="00:00:00" max="24:00:00" min="00:00:00" step="1" >
+
+
     </div>
     <div class="container-fluid" style="order: 2;">
 
         <label style="font-size: x-large"> Rol de la persona accidentada </label>
-        <select class="form-control" id="rol" style="font-size: medium;width: 300px;" >
+        <select class="form-control" id="rol" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
             <option  ng-repeat="x in roles" > {{x.model}}</option>
         </select>
 
@@ -45,15 +50,17 @@
         </select>
 
         <label style="font-size: x-large"> Cantón donde ocurrió el accidente </label>
-        <select class="form-control" id="cant" style="font-size: medium;width: 300px;" ng-click="cargarDistritos()">
+        <select class="form-control" id="cant" style="font-size: medium;width: 300px;" >
             <option  ng-repeat="x in cantones" > {{x.model}}</option>
         </select>
 
-        <label style="font-size: x-large"> Distrito donde ocurrió el accidente </label>
-        <select class="form-control" id="dist" style="font-size: medium;width: 300px;">
-            <option  ng-repeat="x in distritos" > {{x.model}}</option>
+        <label style="font-size: x-large"> Ruta en la que ocurrió el accidente </label>
+        <select class="form-control" id="ruta" style="font-size: medium;width: 300px;" >
+            <option  ng-repeat="x in rutas" > {{x.model}}</option>
         </select>
 
+        <label style="font-size: x-large">  Hora de fin del accidente </label>
+        <input type="time" id="horaFinal" value="00:00:00" max="24:00:00" min="00:00:00" step="1" >
         <br>
     </div>
 </div>

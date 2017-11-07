@@ -12,7 +12,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
             .then(function (response) {
                 console.log("estados del tiempo obtenidos");
                 console.log(response);
-                //guardar los datos en el arreglo de registrados
+                //guardar los datos en el arreglo correspondiente
                 $scope.lesiones=recorrerRespuesta(response.data,"v_tipolesion","v_id");
 
                 if ($scope.lesiones.length==0){
@@ -30,7 +30,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
             .then(function (response) {
                 console.log("roles de persona obtenidos");
                 console.log(response);
-                //guardar los datos en el arreglo de registrados
+                //guardar los datos en el arreglo correspondiente
                 $scope.roles=recorrerRespuesta(response.data,"v_rolpersona","v_id");
 
                 if ($scope.roles.length==0){
@@ -53,7 +53,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
             .then(function (response) {
                 console.log("distritos obtenidos");
                 console.log(response);
-                //guardar los datos en el arreglo distritos
+                //guardar los datos en el arreglo correspondiente
                 $scope.distritos=recorrerRespuesta(response.data,"v_nombredistrito","v_id");
 
             }, function (response) {
@@ -115,20 +115,23 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
       else{         //si es femenino
         sexo=false;  
       }  
-        
-      peticiones.insertarAccidente($scope.lesiones[lesion].id,fecha)
+
+        //realizar la peticion de insercion del accidente
+      peticiones.insertarHerido($scope.lesiones[lesion].id,fecha,$scope.roles[rol].id,edad,sexo,$scope.distritos[distrito].id)
           .then(function (response) {
               console.log(response);
-              mostrarNotificacion("insertado el accidente",2);
+              mostrarNotificacion("El accidente ha sido registrado",2);
+              document.getElementById('edad').value="";
+              document.getElementById('date1').value="";
               
           }, function (response) {
-              mostrarNotificacion("Error en la carga de provincias", 1);
-              console.log("respuesta negativa");
+              mostrarNotificacion("Error en el procedimiento de inserción del accidente", 1);
               console.log(response.data.message);
           });
         
     };
-    
+
+    //carga de los datos requeridos para la insercion del accidente
     $scope.cargarLesiones();
     $scope.cargarRoles();
     $scope.cargarProvincias();
