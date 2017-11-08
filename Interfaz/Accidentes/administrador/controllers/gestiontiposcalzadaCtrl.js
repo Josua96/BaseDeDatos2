@@ -68,10 +68,10 @@ angular.module('adminModule').controller('gestiontiposcalzadaCtrl', function($sc
         
         peticiones.seleccionar("obtenerTiposCalzadas")
             .then(function (response) {
-                console.log("tipos de circulación obtenidos");
+                
                 console.log(response);
                 //guardar los datos en el arreglo de registrados
-                $scope.registrados=recorrerRespuesta(response.data,"v_tipocirculacion","v_id");
+                $scope.registrados=recorrerRespuesta(response.data,"v_tipocalzada","v_id");
 
                 if ($scope.registrados.length==0){
                     mostrarNotificacion("No existen tipos de calzada registrados en el sistema",3);
@@ -90,11 +90,11 @@ angular.module('adminModule').controller('gestiontiposcalzadaCtrl', function($sc
         peticiones.eliminar("eliminarTipoCalzada",$scope.registrados[indice].id)
             .then(function (response) {
                 console.log(response);
-                mostrarNotificacion("El tipo de circulación ha sido eliminado",2);
+                mostrarNotificacion("El tipo de calzada ha sido eliminado",2);
                 $scope.registrados.splice(indice,1); //actualizar el select
 
             }, function (response) {
-                mostrarNotificacion("El tipo de circulación no pudo ser eliminado", 1);
+                mostrarNotificacion("El tipo de calzada no pudo ser eliminado", 1);
                 console.log("respuesta negativa");
                 console.log(response.data.message);
             });

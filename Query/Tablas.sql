@@ -7,7 +7,7 @@ CREATE TABLE Direccion.Provincias
 	IdProvincia		SMALLSERIAL	NOT NULL,
 	NombreProvincia		VARCHAR(50)	NOT NULL	UNIQUE,
 	CONSTRAINT PK_IdProvincia_Provincias	PRIMARY KEY (IdProvincia)
-);s
+);
 
 CREATE TABLE Direccion.Cantones
 (
@@ -111,6 +111,7 @@ CREATE TABLE AccidentesTran.Accidentes(
 	REFERENCES DetallesAccidentes.TiposLesiones(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- true es hombre false mujer
 CREATE TABLE AccidentesTran.AccidentesPersonas(
 	IdAccidente INT NOT NULL,
 	Edad SMALLINT NOT NULL DEFAULT (0),

@@ -23,6 +23,17 @@ angular.module('adminModule')
             });
         };
 
+
+        this.insercionDistrito=function (id,nombre) {
+
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertarDistrito?idcanton="+id+"&nombre="+nombre
+            });
+        };
+
+        //recibe por parametro el nombre del end´point a utilzar y el id respectivo para realizar la modificacion
+        // (ya sea para provincias,cantones,distritos)
         this.modificarD=function (endpointName,id,nombre) {
 
             return $http({
@@ -31,6 +42,8 @@ angular.module('adminModule')
             });
         };
 
+        //recibe por parametro el nombre del end´point a utilzar y el id respectivo para realizar el proceso de borrado
+        // (ya sea para provincias,cantones,distritos)
         this.eliminarD=function (endpointName,id) {
             return $http({
                 method: "DELETE",
@@ -52,6 +65,27 @@ angular.module('adminModule')
             });
         };
 
+        this.seleccionarDistritos=function (idDistrito,idCanton,nombre) {
+            return $http({
+                method: "GET",
+                url: API_ROOT + "obtenerDistritos?idcanton="+idCanton+"&iddistrito="+idDistrito+"&nombre="+nombre
+            });
+        };
+
+        /*
+         ==========================================
+         Endpoints esquema ACCIDENTES TRAN
+         ==========================================
+         */
+
+        this.insertarAccidente=function (lesion,fecha) {
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertarAccidente?idtipolesion="+lesion+"&fecha="+fecha
+            });
+        };
+
+
         /*
         ==========================================
         Endpoints esquema Detalles Accidentes
@@ -65,11 +99,13 @@ angular.module('adminModule')
             });
         };
 
-        this.modificar=function (endpointName,id,nuevoValor) {
-
+        this.modificar=function (endpointName,id,nombre) {
+            console.log("endpoint.. "+endpointName);
+            console.log("id.. "+id);
+            console.log("nombre.. "+nombre);
             return $http({
                 method: "POST",
-                url: API_ROOT + endpointName+"?id="+id+"&valor="+nuevoValor
+                url: API_ROOT + endpointName+"?id="+id+"&valor="+nombre
             });
         };
 

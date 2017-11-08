@@ -1,0 +1,21 @@
+<center>
+
+    <div style="padding-top: 8%">
+        <label style="font-size: x-large"> Descripciones de calzada registradas </label>
+        <br>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in registrados "> {{x.model}}</option>
+        </select>
+        <br>
+
+        <label style="font-size: x-large"> Ingrese el nuevo nombre para la descripción de calzada </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="modificarDescripcionCalzada()"> Realizar modificación </button>
+
+    </div>
+</center>

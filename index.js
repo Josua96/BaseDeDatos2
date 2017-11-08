@@ -14,7 +14,13 @@ client.connect();
 >   Función encargada de la inserción de Fallecidos en la BD desde un archivo JSON exportado desde la  API de COSEV   <
 =======================================================================================================================
 */
+<<<<<<< HEAD
+
+function extraerFallecidos(){
+    client.connect();
+=======
 function extraerFallecidos(){    
+>>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007
     console.log("\n\nInsertando información de Fallecidos en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
     var request = require('request');
     request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/REGIS-DE-FALLE-EN-SITIO/data.ajson/?auth_key=7c23534c30d3fd449f1bd5638363c17b89b7617e', 
@@ -144,4 +150,10 @@ function extraerPersonasAccidentes(){
 >   Llamado de las funciones para que procedan con la extracción de la información   <
 ======================================================================================
 */
+<<<<<<< HEAD
+extraerAccidentes();
+//extraerPersonasAccidentes();
+//extraerFallecidos();
+=======
 extraerFallecidos();
+>>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007

@@ -39,7 +39,7 @@ angular.module('adminModule').controller('gestioncantonesCtrl', function($scope,
             });
     };
 
-    //funcion para modificar una provincia
+    //funcion para modificar la informacion de un canton
     $scope.modificarCanton=function(){
         var nom=document.getElementById('nombre').value;
         if (nom!= ""){
@@ -55,6 +55,7 @@ angular.module('adminModule').controller('gestioncantonesCtrl', function($scope,
                     mostrarNotificacion("La información del cantón fue modificada con éxito", 2);
                     console.log(response);
                     document.getElementById('nombre').value=""; //actualiza vista del campo de texto
+                    $scope.cantones[indice].model=nom;
                 }, function (response) {
                     mostrarNotificacion("Error en la modificación", 1);
                     console.log("respuesta negativa");

@@ -1,0 +1,32 @@
+
+    <div class="container-fluid" style="padding-top: 5%;display: flex;">
+        <div class="container-fluid" style="order: 1; margin-left: 10%">
+        <label style="font-size: x-large"> Seleccione la provincia a la que pertenece el distrito </label>
+
+        <select class="form-control" id="selec" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
+            <option  ng-repeat="x in provincias" > {{x.model}}</option>
+        </select>
+
+        </div>
+        <div class="container-fluid" style="order: 2;">
+        <label style="font-size: x-large"> Seleccione el cantón al que pertenece el distrito </label>
+        <br>
+        <select class="form-control" id="selecc" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in cantones " > {{x.model}}</option>
+        </select>
+
+        <br>
+        </div>
+    </div>
+<center>
+    <div class="container-fluid">
+        <label style="font-size: x-large"> Ingrese el nombre del distrito a insertar </label>
+        <br>
+        <br>
+        <input style="font-size: medium;" type="text"  id="nombre">
+        <br>
+        <br>
+        <button class="btn btn-info" ng-click="insertarDistrito()"> Registrar distrito </button>
+
+    </div>
+</center>

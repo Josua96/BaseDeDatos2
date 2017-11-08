@@ -319,8 +319,8 @@ $BODY$
 BEGIN 
 	
 	IF (TG_RELNAME='tiposlesiones') THEN
-		IF ((NEW.Tipo isnull)  OR ((NEW.Tipo SIMILAR TO '%[0-9]%')=TRUE) OR 
-		((SELECT COUNT(Id) FROM DetallesAccidentes.TiposLesiones WHERE Tipo LIKE NEW.Tipo )>0) OR
+		IF ((NEW.Tipo isnull)  OR ((NEW.Tipo SIMILAR TO '%[0-9]%')=TRUE) 
+		 OR
 		(length(NEW.Tipo)=0)) THEN
 			
 			RAISE EXCEPTION 'Tipo de lesión no válido';
@@ -328,21 +328,20 @@ BEGIN
 		END IF;
 	ELSIF (TG_RELNAME='kilometrosrutas') THEN
 		IF ((NEW.Numero isnull)  OR  
-		((SELECT COUNT(Id) FROM DetallesAccidentes.KilometrosRutas WHERE Numero LIKE NEW.Numero ) >0) OR
 		(length(NEW.Numero)=0)) THEN
 			RAISE EXCEPTION 'Número de ruta no válido';
 
 		END IF;
 	ELSIF (TG_RELNAME='tiposaccidentes') THEN
 		IF ((NEW.Tipo isnull)  OR ((NEW.Tipo SIMILAR TO '%[0-9]%')=TRUE) OR 
-		((SELECT COUNT(Id) FROM DetallesAccidentes.TiposAccidentes WHERE Tipo LIKE NEW.Tipo ) >0 )OR
+		
 		(length(NEW.Tipo)=0)) THEN
 			RAISE EXCEPTION 'Tipo de accidente no válido';
 
 		END IF;
 	ELSE
 		IF ((NEW.Rol isnull)  OR ((NEW.Rol SIMILAR TO '%[0-9]%')=TRUE) OR 
-		((SELECT COUNT(Id) FROM DetallesAccidentes.RolesPersonas WHERE Rol LIKE NEW.Rol ) >0 )OR
+		
 		(length(NEW.Rol)=0)) THEN
 			RAISE EXCEPTION 'Tipo de rol no válido';
 
@@ -411,6 +410,7 @@ EXECUTE PROCEDURE validar_InsUpd_LesionesTiposAccidentesKRRPersonas();
 
 */
 --Funcion para validar la eliminacion de las tablas mencionadas
+
 CREATE OR REPLACE FUNCTION validar_deleteLesionesTiposAccidentesKRRPersonas
 ()
 RETURNS TRIGGER AS
@@ -418,7 +418,7 @@ $BODY$
 BEGIN 
 
 	IF (TG_RELNAME='tiposlesiones') THEN
-		raise notice 'id esta %',(SELECT COUNT(Id) FROM DetallesAccidentes.TiposLesiones WHERE OLD.Id=Id);
+	
 		IF (((SELECT COUNT(Id) FROM DetallesAccidentes.TiposLesiones WHERE OLD.Id=Id) > 0) AND 
 		((SELECT COUNT(Id) FROM AccidentesTran.Accidentes WHERE IdTipoLesion=OLD.Id)>0)) THEN
 			
@@ -552,52 +552,50 @@ EXECUTE PROCEDURE validar_InsUpd_TETD();
 		-- TipoCalzada
 		-- DescipcionCalzada 
 -------------------------------------------------
+
 CREATE OR REPLACE FUNCTION validar_InsUpd_TETD() 
 RETURNS TRIGGER
 AS
 $BODY$
 BEGIN   
 	IF (TG_RELNAME = 'tiposcirculacion') THEN 
-		IF (	/*validacion #1: si ya existe el tipo ingresado */
-			((SELECT COUNT(Tipo) FROM DetallesAccidentes.TiposCirculacion AS TC WHERE TC.Tipo = NEW.Tipo) > 0) OR 
-			/*validacion #2: si tiene numeros el tipo ingresado */
+		IF (	 
+			/*validacion #1: si tiene numeros el tipo ingresado */
 			(SELECT NEW.Tipo SIMILAR TO '%[0-9]%') OR
-			/*validacion #3: si el valor ingresado es null */
+			/*validacion #2: si el valor ingresado es null */
 			(NEW.Tipo ISNULL) OR
-			/*validacion #4: si el valor ingresado es '' es decir no escribe nada */
+			/*validacion #3: si el valor ingresado es '' es decir no escribe nada */
 			(length(NEW.Tipo) = 0)) THEN
-				RAISE EXCEPTION 'Error con el dato ingresado de la tabla estados tipos circulacion.';
+				
+				RAISE EXCEPTION 'Error en el dato ingresado de la tabla tipos circulacion';
 		END IF;
 	ELSIF (TG_RELNAME = 'estadostiempo') THEN 
-		IF (	/*validacion #1: si ya existe el tipo ingresado */
-			((SELECT COUNT(Estado) FROM DetallesAccidentes.EstadosTiempo AS ET WHERE ET.Estado = NEW.Estado) > 0) OR 
-			/*validacion #2: si tiene numeros el tipo ingresado */
+		IF (	
+			/*validacion #1: si tiene numeros el tipo ingresado */
 			(SELECT NEW.Estado SIMILAR TO '%[0-9]%') OR
-			/*validacion #3: si el valor ingresado es null */
+			/*validacion #2: si el valor ingresado es null */
 			(NEW.Estado ISNULL) OR
-			/*validacion #4: si el valor ingresado es '' es decir no escribe nada */
+			/*validacion #3: si el valor ingresado es '' es decir no escribe nada */
 			(length(NEW.Estado) = 0)) THEN
 				RAISE EXCEPTION 'Error con el dato ingresado de la tabla estados tiempo.';
 		END IF;
 	ELSIF (TG_RELNAME = 'tiposcalzadas') THEN 
-		IF (	/*validacion #1: si ya existe el tipo ingresado */
-			((SELECT COUNT(Tipo) FROM DetallesAccidentes.TiposCalzadas AS TC WHERE TC.Tipo = NEW.Tipo) > 0) OR 
-			/*validacion #2: si tiene numeros el tipo ingresado */
+		IF (	
+			/*validacion #1: si tiene numeros el tipo ingresado */
 			(SELECT NEW.Tipo SIMILAR TO '%[0-9]%') OR
-			/*validacion #3: si el valor ingresado es null */
+			/*validacion #2: si el valor ingresado es null */
 			(NEW.Tipo ISNULL) OR
-			/*validacion #4: si el valor ingresado es '' es decir no escribe nada */
+			/*validacion #3: si el valor ingresado es '' es decir no escribe nada */
 			(length(NEW.Tipo) = 0)) THEN
 				RAISE EXCEPTION 'Error con el dato ingresado de la tabla tipos calzadas.';
 		END IF;
 	ELSIF (TG_RELNAME = 'descripcionescalzadas') THEN 
-		IF (	/*validacion #1: si ya existe el tipo ingresado */
-			((SELECT COUNT(Descripcion) FROM DetallesAccidentes.DescripcionesCalzadas AS DC WHERE DC.Descripcion = NEW.Descripcion) > 0) OR 
-			/*validacion #2: si tiene numeros el tipo ingresado */
+		IF (	
+			/*validacion #1: si tiene numeros el tipo ingresado */
 			(NEW.Descripcion SIMILAR TO '%[0-9]%') OR
-			/*validacion #3: si el valor ingresado es null */
+			/*validacion #2: si el valor ingresado es null */
 			(NEW.Descripcion ISNULL) OR
-			/*validacion #4: si el valor ingresado es '' es decir no escribe nada */
+			/*validacion #3: si el valor ingresado es '' es decir no escribe nada */
 			(LENGTH(NEW.Descripcion) = 0)) THEN
 				RAISE EXCEPTION 'Error con el dato ingresado de la tabla descripciones calzadas.';
 		END IF;
@@ -658,19 +656,19 @@ BEGIN
 		END IF;
 	ELSIF (TG_RELNAME = 'estadostiempo') THEN 
 		/*validacion #1: si ya existe el id ingresado */
-		IF (((SELECT COUNT(*) FROM DetallesAccidentes.EstadosTiempo AS ET WHERE ET.Id = NEW.Id) > 0) AND
+		IF (((SELECT COUNT(*) FROM DetallesAccidentes.EstadosTiempo AS ET WHERE ET.Id = OLD.Id) > 0) AND
 		   ((SELECT COUNT(*) FROM AccidentesTran.AccidentesGenerales AS AG WHERE AG.IdEstadoTiempo = OLD.Id) > 0)) THEN
 			RAISE EXCEPTION 'Error al intentar eliminar en la tabla estados tiempo.';
 		END IF;
 	ELSIF (TG_RELNAME = 'tiposcalzadas') THEN 
 		/*validacion #1: si ya existe el id ingresado */
-		IF (((SELECT COUNT(*) FROM DetallesAccidentes.TiposCalzadas AS TC WHERE TC.Id = NEW.Id) > 0)AND
+		IF (((SELECT COUNT(*) FROM DetallesAccidentes.TiposCalzadas AS TC WHERE TC.Id = OLD.Id) > 0)AND
 		   ((SELECT COUNT(*) FROM AccidentesTran.AccidentesGenerales AS AG WHERE AG.IdTipoCalzada = OLD.Id) > 0))THEN
 			RAISE EXCEPTION 'Error al intentar eliminar en la tabla tipos calzadas.';
 		END IF;
 	ELSIF (TG_RELNAME = 'descripcionescalzadas') THEN 
 		/*validacion #1: si ya existe el id ingresado */
-		IF (((SELECT COUNT(*) FROM DetallesAccidentes.DescripcionesCalzadas AS DC WHERE DC.Id = NEW.Id) > 0) AND
+		IF (((SELECT COUNT(*) FROM DetallesAccidentes.DescripcionesCalzadas AS DC WHERE DC.Id = OLD.Id) > 0) AND
 		   (((SELECT COUNT(*) FROM AccidentesTran.AccidentesGenerales AS AG WHERE AG.IdDescripcionCalzadaVertical = OLD.Id) > 0) OR
 		   ((SELECT COUNT(*) FROM AccidentesTran.AccidentesGenerales AS AG WHERE AG.IdDescripcionCalzadaHorizontal = OLD.Id) > 0))) THEN 
 			RAISE EXCEPTION 'Error al intentar eliminar en la tabla descripciones calzadas.';

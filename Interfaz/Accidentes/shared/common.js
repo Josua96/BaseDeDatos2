@@ -135,11 +135,32 @@ function mostrarNotificacion(texto,num)
  
   else
   {
-    swal(texto);
+      swal({ //
+          title: texto,
+          type: "warning",
+          confirmButtonColor: "#27F034",
+          timer: 2000,
+          showConfirmButton: false
+      });  
+    
   }
 }
 
-//funcion para retornar una lista con diccionarios a paritd de una respuesta;
+
+//funcion para evaluar la seleccion en un select
+//si la variable seleccionado vale -1 retorna cero de lo contrario retorna 
+//la misma variable
+
+function evaluarSeleccion(seleccionado) {
+    if (seleccionado==-1){
+        return 0;
+    }
+    else{
+        return seleccionado;
+    }
+}
+
+//funcion para retornar una lista con diccionarios a partir de una respuesta;
 function recorrerRespuesta(respuesta,texto,identificador) {
     var largo=respuesta.length;
     var cont=0;
@@ -152,8 +173,6 @@ function recorrerRespuesta(respuesta,texto,identificador) {
         lista.push(diccionario); //agregar a la lista de opciones
         cont++;
     }
-    console.log("provincias registradas");
-    console.log(lista);
     return lista;
 }
 

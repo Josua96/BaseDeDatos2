@@ -38,18 +38,23 @@ angular.module('adminModule').controller('gestionprovinciasCtrl', function($scop
 
     //funcion para modificar una provincia
     $scope.modificarProvincia=function(){
+        if ($scope.provincias.length == 0){
+            window.location.href = ('#/provincias');
+            mostrarNotificacion("No existen provincas registradas en el sistema",1);
+        }
         var nom=document.getElementById('nombre').value;
         console.log("nombre value.. "+ nom);
         if (nom!= ""){
             var indice=document.getElementById('selec').selectedIndex;
             
             //enviar id de la provincia seleccionada y el nuevo nombre de la misma
-            peticiones.modificarProvincia("modificarProvincia",$scope.provincias[indice].id,nom)
+            peticiones.modificarD("modificarProvincia",$scope.provincias[indice].id,nom)
                 .then(function (response) {
                     
                     mostrarNotificacion("La información de la provincia fue modificada con éxito", 2);
                     console.log(response);
                     document.getElementById('nombre').value="";
+                    $scope.provincias[indice].model=nom;
                 }, function (response) {
                     mostrarNotificacion("Error en la modificación", 1);
                     console.log("respuesta negativa");
@@ -62,10 +67,7 @@ angular.module('adminModule').controller('gestionprovinciasCtrl', function($scop
     };
     
      $scope.seleccionarProvincia=function () {
-         if ($scope.provincias.length == 0){
-             window.location.href = ('#/cantones');
-             mostrarNotificacion("No existen provincas registradas en el sistema",1);
-         }
+
          peticiones.seleccionarProvincias(-1,-1)
              .then(function (response) {
                  console.log(response);
@@ -79,7 +81,7 @@ angular.module('adminModule').controller('gestionprovinciasCtrl', function($scop
 
     $scope.eliminarProvincia=function () {
         var indice=document.getElementById('selec').selectedIndex;
-        peticiones.eliminarProvincia("eliminarProvincia",$scope.provincias[indice].id)
+        peticiones.eliminarD("eliminarProvincia",$scope.provincias[indice].id)
             .then(function (response) {
                 console.log(response);
                 mostrarNotificacion("La provincia ha sido eliminada",2);

@@ -42,10 +42,9 @@
     <link href="../assets/css/themes/informes.css" rel="stylesheet">
 </head>
 
-<body class="theme-blue" style="background-image:url('../assets/images/fondoTec.jpg');
-                    background-size:cover;
+<body class="theme-blue" style="background-size:cover;
                     background-repeat:no-repeat;
-                    background-attachment:fixed;">            
+                    background-attachment:fixed;">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -103,6 +102,13 @@
                     </li>
 
                     <li  class="active">
+                        <a href="#/insertarHeridos" onclick="closeSideBar()">
+                            <i class="material-icons">assignment</i>
+                            <span>Registro de nuevo accidente con heridos</span>
+                        </a>
+                    </li>
+
+                    <li  class="active">
                         <a href="#/provincias" onclick="closeSideBar()">
                             <i class="material-icons">assignment</i>
                             <span>Gestión de Provincias</span>
@@ -150,16 +156,30 @@
                     </li>
 
                     <li class="active">
-                        <a href="#/informes" onclick="closeSideBar()">
-                            <i class="material-icons"> description</i>
-                            <span> Ver informes </span>
+                        <a href="#/tiposcirculacion" onclick="closeSideBar()">
+                            <i class="material-icons"> assignment</i>
+                            <span> Gestión de tipos de circulación </span>
                         </a>
                     </li>
 
                     <li class="active">
-                        <a href="#/descargablesTotalAreas" onclick="closeSideBar()">
+                        <a href="#/estadostiempo" onclick="closeSideBar()">
                             <i class="material-icons"> description</i>
-                            <span> Reportes </span>
+                            <span> Gestión de estados del tiempo </span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="#/descripcionescalzada" onclick="closeSideBar()">
+                            <i class="material-icons"> description</i>
+                            <span> Gestión de descripciones de calzada </span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="#/tiposlesiones" onclick="closeSideBar()">
+                            <i class="material-icons"> description</i>
+                            <span> Gestión de tipos de lesiones </span>
                         </a>
                     </li>
 
@@ -179,7 +199,7 @@
                 </div>
                 <div class="version">
 
-                    <b>Powered by: </b> Eliomar Rodriguez & Josua Carranza
+                    <b>Powered by: </b> Eliomar & Felipe & Josua
                 </div>
         </div>
         </aside>
@@ -221,11 +241,18 @@
     <script src="controllers/gestionprovinciasCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestioncantonesCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestiondistritosCtrl.js"></script><!--Importar el js-->
+
+    <script src="controllers/gestiontiposcirculacionCtrl.js"></script><!--Importar el js-->
+    <script src="controllers/gestionestadostiempoCtrl.js"></script><!--Importar el js-->
+    <script src="controllers/gestiondescripcionescalzadaCtrl.js"></script><!--Importar el js-->
+    <script src="controllers/gestiontiposlesionesCtrl.js"></script><!--Importar el js-->
+
     <script src="controllers/gestiontiposcalzadaCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestiontiposaccidentesCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestionrolespersonaCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestionkilometrorutaCtrl.js"></script><!--Importar el js-->
     <script src="controllers/gestionaccidentesgeneralesCtrl.js"></script><!--Importar el js-->
+    <script src="controllers/insercionheridosCtrl.js"></script><!--Importar el js-->
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
