@@ -7,8 +7,7 @@
 <div class="container-fluid" style="padding-top:2%;display: flex;">
     <div class="container-fluid" style="order: 1; margin-left: 10%">
         <label style="font-size: x-large">  Tipo de lesión </label>
-
-        <select class="form-control" id="lesion" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
+        <select class="form-control" id="lesion" style="font-size: medium;width: 300px;">
             <option  ng-repeat="x in lesiones" > {{x.model}}</option>
         </select>
 
@@ -36,7 +35,7 @@
     <div class="container-fluid" style="order: 2;">
 
         <label style="font-size: x-large"> Rol de la persona accidentada </label>
-        <select class="form-control" id="rol" style="font-size: medium;width: 300px;" ng-click="seleccionarCantones()">
+        <select class="form-control" id="rol" style="font-size: medium;width: 300px;" >
             <option  ng-repeat="x in roles" > {{x.model}}</option>
         </select>
 
@@ -60,8 +59,7 @@
 </div>
 <center>
     <div class="container-fluid">
-        <br>
-        <br>
+
         <button class="btn btn-info" ng-click="insertarAccidente()"> Registrar Accidente </button>
 
     </div>

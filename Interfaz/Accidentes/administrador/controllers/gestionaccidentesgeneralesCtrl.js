@@ -1,3 +1,4 @@
+
 angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', function($scope,$location,$http,peticiones) {
 
     $scope.provincias = [];
@@ -5,7 +6,6 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
     $scope.distritos = [];
     $scope.areaGeo = ['Rural','Urbano','Otros'];
     $scope.tipoRuta = ['Nacional','Cantonal','Desconocida'];
-
     $scope.tipoCirculacion = [];
     $scope.estadoTiempo = [];
     $scope.tipoCalzada = [];
@@ -13,6 +13,7 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
     $scope.tipoAccidente = [];
     $scope.tipoCalzada = [];
     $scope.kilometro = [];
+    $scope.tipoLesion = [];
 
     $scope.obtenerSeleccionada=function (selected) {
         console.log("entro");
@@ -133,33 +134,138 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
             });
     };
 
+    $scope.seleccionarTiposLesiones=function () {
+        peticiones.seleccionar("obtenerTiposLesiones")
+            .then(function (response) {
+                //guardar los datos en el arreglo de registrados
+                $scope.tipoLesion = recorrerRespuesta(response.data,"v_tipolesion","v_id");
+            }, function (response) {
+                mostrarNotificacion("Error en la carga de tipos de lesiones", 1);
+            });
+    };
+
     $scope.insertarAccidenteGeneral = function () {
         var horaInicio = document.getElementById("horaInicio").value;
-        console.log(horaInicio);
+
         var horaFinal = document.getElementById("horaFinal").value;
-        console.log(horaFinal);
-        var areaGeog = $scope.areaGeo[evaluarSeleccion(document.getElementById("areaGeografica").selectedIndex)];
-        console.log(areaGeog);
-        var distrito = $scope.distritos[evaluarSeleccion(document.getElementById("distrito").selectedIndex)].model;
-        console.log(distrito);
-        var tipoRutas = $scope.tipoRuta[evaluarSeleccion(document.getElementById("tipoRuta").selectedIndex)];
-        console.log(tipoRutas);
-        var tipoCirculacion = $scope.tipoCirculacion[evaluarSeleccion(document.getElementById("tipoCirculacion").selectedIndex)].model;
-        console.log(tipoCirculacion);
-        var estadoTiempo = $scope.estadoTiempo[evaluarSeleccion(document.getElementById("estadoTiempo").selectedIndex)].model;
-        console.log(estadoTiempo);
-        var tipoCalzada = $scope.tipoCalzada[evaluarSeleccion(document.getElementById("tipoCalzada").selectedIndex)].model;
-        console.log(tipoCalzada);
-        var descripcionCalzadaH = $scope.descripcionCalzada[evaluarSeleccion(document.getElementById("descripcionCalzadaHorizontal").selectedIndex)].model;
-        console.log(descripcionCalzadaH);
-        var descripcionCalzadaV = $scope.descripcionCalzada[evaluarSeleccion(document.getElementById("descripcionCalzadaVertical").selectedIndex)].model;
-        console.log(descripcionCalzadaV);
-        var tipoAccidente = $scope.tipoAccidente[evaluarSeleccion(document.getElementById("tipoAccidente").selectedIndex)].model;
-        console.log(tipoAccidente);
-        var kilometro = $scope.kilometro[evaluarSeleccion(document.getElementById("kilometro").selectedIndex)].model;
-        console.log(kilometro);
-        var ruta = $scope.kilometro[evaluarSeleccion(document.getElementById("ruta").selectedIndex)].model;
-        console.log(ruta);
+
+        var areaGeo;
+        if(document.getElementById("areaGeografica").selectedIndex == -1){
+            alert("Error con el area geografica seleccionada");
+            return;
+        }
+        else if(document.getElementById("areaGeografica").selectedIndex == 0)
+            areaGeo = 'R';
+        else if(document.getElementById("areaGeografica").selectedIndex == 1)
+            areaGeo = 'U';
+        else
+            areaGeo = 'O';
+
+        var distrito;
+        if (document.getElementById("distrito").selectedIndex == -1){
+            alert("Error con el distrito seleccionado");
+            return;
+        }
+        else
+            distrito = $scope.distritos[document.getElementById("distrito").selectedIndex].id;
+
+
+        var tipoRutas;
+        if(document.getElementById("tipoRuta").selectedIndex == -1){
+            alert("Error con el tipo de ruta seleccionada");
+            return;
+        }
+        else if(document.getElementById("tipoRuta").selectedIndex == 0)
+            tipoRutas = 'N';
+        else if(document.getElementById("tipoRuta").selectedIndex == 1)
+            tipoRutas = 'C';
+        else
+            tipoRutas = 'D';
+
+
+        var tipoCirculacion;
+        if (document.getElementById("tipoCirculacion").selectedIndex == -1){
+            alert("Error con el tipo de circulacion seleccionada");
+            return;
+        }
+        else
+            tipoCirculacion = $scope.tipoCirculacion[document.getElementById("tipoCirculacion").selectedIndex].id;
+
+        var estadoTiempo;
+        if (document.getElementById("estadoTiempo").selectedIndex == -1){
+            alert("Error con el estado tiempo seleccionado");
+            return;
+        }
+        else
+            estadoTiempo = $scope.estadoTiempo[document.getElementById("estadoTiempo").selectedIndex].id;
+
+        var tipoCalzada;
+        if (document.getElementById("tipoCalzada").selectedIndex == -1){
+            alert("Error con el tipo de calzada seleccionada");
+            return;
+        }
+        else
+            tipoCalzada = $scope.tipoCalzada[document.getElementById("tipoCalzada").selectedIndex].id;
+
+        var descripcionCalzadaV;
+        if (document.getElementById("descripcionCalzadaVertical").selectedIndex == -1){
+            alert("Error con la descripcion calzada vertical seleccionada");
+            return;
+        }
+        else
+            descripcionCalzadaV = $scope.descripcionCalzada[document.getElementById("descripcionCalzadaVertical").selectedIndex].id;
+
+        var descripcionCalzadaH;
+        if (document.getElementById("descripcionCalzadaHorizontal").selectedIndex == -1){
+            alert("Error con la descripcion calzada horizontal seleccionada");
+            return;
+        }
+        else
+            descripcionCalzadaH = $scope.descripcionCalzada[document.getElementById("descripcionCalzadaHorizontal").selectedIndex].id;
+
+        var tipoAccidente;
+        if (document.getElementById("tipoAccidente").selectedIndex == -1){
+            alert("Error con el tipo de accidente seleccionado");
+            return;
+        }
+        else
+            tipoAccidente = $scope.tipoAccidente[document.getElementById("tipoAccidente").selectedIndex].id;
+
+
+        var kilometro;
+        if (document.getElementById("kilometro").selectedIndex == -1){
+            alert("Error con el kilometro seleccionado");
+            return;
+        }
+        else
+            kilometro = $scope.kilometro[document.getElementById("kilometro").selectedIndex].id;
+
+
+        var ruta;
+        if (document.getElementById("ruta").selectedIndex == -1){
+            alert("Error con la ruta seleccionada");
+            return;
+        }
+        else
+            ruta = $scope.kilometro[document.getElementById("ruta").selectedIndex].id;
+
+        var fecha = document.getElementById("fecha").value;
+
+        var tipoLesion;
+        if (document.getElementById("tipoLesion").selectedIndex == -1){
+            alert("Error con el tipo de lesion seleccionado");
+            return;
+        }
+        else
+            tipoLesion = $scope.tipoLesion[document.getElementById("tipoLesion").selectedIndex].id;
+
+        peticiones.insertAccidenteGeneral(horaInicio, horaFinal, areaGeo, distrito, tipoRutas,tipoCirculacion,estadoTiempo, tipoCalzada,
+            descripcionCalzadaV, descripcionCalzadaH, tipoAccidente, kilometro, ruta, fecha, tipoLesion)
+            .then(function (response) {
+                mostrarNotificacion("Inserción exitosa",2)
+            }, function (response) {
+                mostrarNotificacion("Error en la carga de accidente general", 1);
+            });
     };
 
 
@@ -172,5 +278,6 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
     $scope.seleccionarDescripcionesCalzadas();
     $scope.seleccionarTipoAccidente();
     $scope.seleccionarKilometroRuta();
+    $scope.seleccionarTiposLesiones();
 
 });

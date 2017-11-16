@@ -1,11 +1,12 @@
-﻿/*
+﻿﻿/*
 *     Web Service REST para la BD Accidentes Transito
 *
 * Autor: Josua Carranza | 2016------
 * Contacto: ---@gmail.com, ---, ---@estudiantec.cr
+/*
+*  WEB SERVICE para la base de datos Accidentes Tránsito
 *
 */
-
 
 
 var pg = require('pg'); //postgres controller
@@ -81,6 +82,25 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "DELETE, GET, POST");
     next();
+})
+
+
+
+app.get('/login',function(req,res){
+
+	var conexion="postgres://"+req.query.usuario+":"+req.query.codigo+"@localhost:5432/AccidentesTransito";
+	client = new pg.Client(conexion);
+  	//validar que se ingresó un usuario válido
+  	client.connect(function(err){
+  		if (err){
+  			res.status(400).send(
+      			{message:'Ocurrió un error en el proceso'});
+  			return;
+  		}
+  		res.end(JSON.stringify(true));
+
+  	});
+
 })
 
 
@@ -432,6 +452,35 @@ app.post('/insertarAccidenteGeneral', function(req, res) {
 
    })
 
+// funcion propia del CRUD de accident general
+app.post('/insertAccidenteGeneral',function(req,res){
+	db.func('insertAccidenteGeneralWeb',[
+		req.query.horaInicio,
+		req.query.horaFinal,
+		req.query.areaGeografica,
+		req.query.distrito,
+		req.query.tipoRuta,
+		req.query.tipoCirculacion,
+		req.query.estadoTiempo,
+		req.query.tipoCalzada,
+		req.query.descripCalzadaV,
+		req.query.descripCalzadaH,
+		req.query.tipoAccidente,
+		req.query.kilometro,
+		req.query.ruta,
+		req.query.fecha,
+		req.query.tipoLesion
+	])
+	.then(data => {
+		res.end(JSON.stringify(true));
+	})
+	.catch(error => {
+		console.log("ERROR: ",error);
+		res.status(400).send(
+		{message:'Ocurrió un error en el proceso'});
+	})
+})
+
 
 
 app.post('/modificarAccidenteGeneral', function(req, res) {
@@ -555,6 +604,41 @@ app.delete('/eliminarAccidentePersona', function(req, res) {
 	
 })
 
+
+app.post('/insertarHerido',function(req,res){
+	
+	db.func('insertarEnHeridosWeb',[req.query.idTipoLesion,
+		req.query.fecha,req.query.idRolPersona,req.query.edad,
+		req.query.sexo,req.query.idDistrito])
+		.then(data => {
+			console.log(data);
+			res.end(JSON.stringify(true));
+		})
+		.catch(error => {
+      	console.log("ERROR: ",error);
+      	res.status(400).send(
+      	{message:'Ocurrió un error en el proceso'});
+    			})
+})
+
+
+app.post('/insertarFallecido',function(req,res){
+	
+	db.func('insertarEnFallecidosWeb',[req.query.fecha,
+		req.query.idRolPersona,req.query.edad,
+		req.query.sexo,req.query.idCanton,req.query.horaInicio,
+		req.query.horaFinal,req.query.idTipoAccidente,
+		req.query.idRuta])
+		.then(data => {
+			console.log(data);
+			res.end(JSON.stringify(true));
+		})
+		.catch(error => {
+      	console.log("ERROR: ",error);
+      	res.status(400).send(
+      	{message:'Ocurrió un error en el proceso'});
+    			})
+})
 
 app.post('/insertarHeridos', function(req, res) {
 	var id;

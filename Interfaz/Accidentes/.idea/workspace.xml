@@ -31,14 +31,14 @@
       <file leaf-file-name="insercionheridosCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrador/controllers/insercionheridosCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1819">
-              <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
+            <state relative-caret-position="153">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="25" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/common.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
@@ -48,61 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestionprovinciasCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionprovinciasCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="78" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/administrador/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestiondescripcionescalzadaCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiondescripcionescalzadaCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestiondistritosCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiondistritosCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1581">
-              <caret line="93" column="13" selection-start-line="79" selection-start-column="8" selection-end-line="93" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestiontiposlesionesCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposlesionesCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="81" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestiontiposcirculacionCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposcirculacionCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="334">
+              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -111,8 +61,8 @@
       <file leaf-file-name="insercionHeridos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrador/sections/insercionHeridos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+            <state relative-caret-position="153">
+              <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#center#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#1;n#center#0;n#!!top" expanded="true" />
@@ -125,12 +75,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestioncantonesCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestioncantonesCtrl.js">
+      <file leaf-file-name="insercionfallecidosCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/controllers/insercionfallecidosCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="124" column="38" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestiontiposlesionesCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposlesionesCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="81" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insercionFallecidos.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/sections/insercionFallecidos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#label#0;n#center#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#1;n#center#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainView.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/MainView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="256" column="55" selection-start-line="256" selection-start-column="55" selection-end-line="256" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1581">
               <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="101" selection-end-column="19" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+            <state relative-caret-position="997">
+              <caret line="221" column="51" selection-start-line="221" selection-start-column="51" selection-end-line="221" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestionkilometrorutaCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionkilometrorutaCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-493">
+              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
               <folding />
             </state>
           </provider>
@@ -173,13 +185,20 @@
         <option value="$PROJECT_DIR$/administrador/controllers/gestiontiposaccidentesCtrl.js" />
         <option value="$PROJECT_DIR$/administrador/controllers/gestionrolespersonaCtrl.js" />
         <option value="$PROJECT_DIR$/administrador/controllers/gestioninsercionaccidentesheridosCtrl.js" />
-        <option value="$PROJECT_DIR$/administrador/app.js" />
+        <option value="$PROJECT_DIR$/shared/common.js" />
+        <option value="$PROJECT_DIR$/administrador/controllers/insercionheridosCtrl.js" />
         <option value="$PROJECT_DIR$/administrador/MainView.html" />
+        <option value="$PROJECT_DIR$/administrador/app.js" />
         <option value="$PROJECT_DIR$/administrador/sections/insercionHeridos.html" />
+        <option value="$PROJECT_DIR$/administrador/sections/insercionFallecidos.html" />
+        <option value="$PROJECT_DIR$/administrador/controllers/insercionfallecidosCtrl.js" />
         <option value="$PROJECT_DIR$/administrador/services.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/administrador/controllers/insercionheridosCtrl.js" />
         <option value="$PROJECT_DIR$/shared/common.js" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
       </list>
     </option>
   </component>
@@ -480,12 +499,17 @@
 =======
       <updated>1509929843024</updated>
       <workItem from="1509929846579" duration="8250000" />
+<<<<<<< HEAD
       <workItem from="1510003417785" duration="1037000" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+      <workItem from="1510003417785" duration="10038000" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="70224000" />
   </component>
@@ -511,12 +535,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
 =======
     <option name="totallyTimeSpent" value="9287000" />
+=======
+    <option name="totallyTimeSpent" value="18288000" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -838,6 +865,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposcalzadaCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="703">
@@ -936,21 +964,38 @@
           <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
 =======
     <entry file="file://$PROJECT_DIR$/administrador/sections/insertarDistrito.html">
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/sections/insertarDistrito.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrador/MainView.html">
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionrolespersonaCtrl.js">
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
->>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+        <state relative-caret-position="136">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="83" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiondescripcionescalzadaCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="385">
+          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+>>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/assets/css/themes/theme-blue.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -962,10 +1007,17 @@
         <state relative-caret-position="946">
           <caret line="216" column="32" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiondistritosCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" column="13" selection-start-line="79" selection-start-column="8" selection-end-line="93" selection-end-column="13" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/assets/css/login.css">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -983,10 +1035,17 @@
         <state relative-caret-position="136">
           <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="83" selection-end-column="15" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestioncantonesCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="101" selection-end-column="19" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/assets/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -994,6 +1053,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
     <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiondescripcionescalzadaCtrl.js">
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposcirculacionCtrl.js">
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1011,6 +1073,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/assets/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5757">
@@ -1021,10 +1084,17 @@
         <state relative-caret-position="1581">
           <caret line="93" column="13" selection-start-line="79" selection-start-column="8" selection-end-line="93" selection-end-column="13" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionprovinciasCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="78" selection-end-column="16" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/assets/css/themes/informes.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -1036,10 +1106,17 @@
         <state relative-caret-position="1581">
           <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="101" selection-end-column="19" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/shared/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="154" column="13" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/administrador/controllers/mainCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1051,10 +1128,17 @@
         <state relative-caret-position="1139">
           <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="81" selection-end-column="15" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionkilometrorutaCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionprovinciasCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1087,27 +1171,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-966">
           <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/MainView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="256" column="55" selection-start-line="256" selection-start-column="55" selection-end-line="256" selection-end-column="55" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/administrador/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="862">
           <caret line="125" column="40" lean-forward="false" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="40" />
 =======
     <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionprovinciasCtrl.js">
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/gestiontiposlesionesCtrl.js">
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="78" selection-end-column="16" />
+        <state relative-caret-position="572">
+          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="81" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/administrador/sections/insercionHeridos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+        <state relative-caret-position="153">
+          <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
           <folding>
             <element signature="n#style#0;n#label#0;n#center#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#1;n#center#0;n#!!top" expanded="true" />
@@ -1119,11 +1213,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrador/services.js">
+    <entry file="file://$PROJECT_DIR$/administrador/app.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1428">
           <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+        <state relative-caret-position="997">
+          <caret line="221" column="51" selection-start-line="221" selection-start-column="51" selection-end-line="221" selection-end-column="51" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
@@ -1136,13 +1235,19 @@
 =======
     <entry file="file://$PROJECT_DIR$/administrador/controllers/insercionheridosCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1819">
           <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="25" selection-end-column="6" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/administrador/controllers/gestionaccidentesgeneralesCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1154,6 +1259,35 @@
         <state relative-caret-position="266">
           <caret line="154" column="13" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
 >>>>>>> 9392b4de1dd8fed8b9f0553190ca46dc53bd9236
+=======
+    <entry file="file://$PROJECT_DIR$/administrador/sections/insercionFallecidos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#center#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#center#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrador/controllers/insercionfallecidosCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="124" column="38" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrador/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+>>>>>>> e858042dc14f659a319acebe8c3a0340e5edf7f7
           <folding />
         </state>
       </provider>

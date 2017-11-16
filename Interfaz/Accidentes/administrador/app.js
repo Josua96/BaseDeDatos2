@@ -60,6 +60,7 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
             .when("/tiposCalzada",{
                 templateUrl:"sections/gestiontiposcalzada.html",
                 controller:'gestiontiposcalzadaCtrl'
+
             })
             .when("/insertarTipoCalzada",{
                 templateUrl:"sections/insertarTipoCalzada.html",
@@ -217,6 +218,12 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
             .when("/insertarAccidenteGeneral",{
                 templateUrl:"sections/insertarAccidenteGeneral.html",
                 controller:'gestionaccidentesgeneralesCtrl'
+            })
+
+            //fallecidos
+            .when("/insertarFallecidos",{
+                templateUrl:"sections/insercionFallecidos.html",
+                controller:'insercionfallecidosCtrl'
             })
     }
 ]);

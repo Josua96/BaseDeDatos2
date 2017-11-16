@@ -78,14 +78,23 @@ angular.module('adminModule')
          ==========================================
          */
 
-        this.insertarAccidente=function (lesion,fecha) {
+        this.insertarFallecido=function (fecha,rol,edad,sexo,canton,inicio,final,tipoAccidente,ruta) {
             return $http({
                 method: "POST",
-                url: API_ROOT + "insertarAccidente?idtipolesion="+lesion+"&fecha="+fecha
+                url: API_ROOT + "insertarFallecido?fecha="+fecha
+                +"&idRolPersona="+rol+"&edad="+edad+"&sexo="+sexo+"&idCanton="+canton+
+                    "&horaInicio="+inicio+"&horaFinal="+final+"&idTipoAccidente="+tipoAccidente+"&idRuta="+ruta  
+                    
             });
         };
 
-
+        this.insertarHerido=function (lesion,fecha,rol,edad,sexo,distrito) {
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertarHerido?idTipoLesion="+lesion+"&fecha="+fecha
+                +"&idRolPersona="+rol+"&edad="+edad+"&sexo="+sexo+"&idDistrito="+distrito
+            });
+        };
         /*
         ==========================================
         Endpoints esquema Detalles Accidentes
@@ -120,6 +129,26 @@ angular.module('adminModule')
             return $http({
                 method: "GET",
                 url: API_ROOT + endpointName
+            });
+        };
+
+        /*
+        ==========================================
+        Endpoints para insertar accidente general
+        ==========================================
+         */
+        this.insertAccidenteGeneral=function (horaInicio, horaFinal, areaGeografica, distrito, tipoRuta, tipoCirculacion,
+                                estadoTiempo, tipoCalzada, descripCalzadaV, descripCalzadaH, tipoAccidente, kilometro, ruta,
+                                fecha, tipoLesion)
+        {
+            console.log("Error en service");
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertAccidenteGeneral"+"?horaInicio=" + horaInicio+"&horaFinal="+horaFinal+
+                "&areaGeografica="+areaGeografica+"&distrito="+distrito+"&tipoRuta="+tipoRuta+"&tipoCirculacion="+
+                tipoCirculacion+"&estadoTiempo="+estadoTiempo+"&tipoCalzada="+tipoCalzada+"&descripCalzadaV="+
+                descripCalzadaV+"&descripCalzadaH="+descripCalzadaH+"&tipoAccidente="+tipoAccidente+"&kilometro="+
+                kilometro+"&ruta="+ruta+"&fecha="+fecha+"&tipoLesion="+tipoLesion
             });
         };
 

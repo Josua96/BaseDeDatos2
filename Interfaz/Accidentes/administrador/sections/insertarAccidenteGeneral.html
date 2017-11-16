@@ -41,6 +41,11 @@
         <select class="form-control" id="ruta" style="font-size: medium;width: 300px;">
             <option ng-repeat="x in kilometro">{{x.model}}</option>
         </select>
+
+        <h4>Tipo de lesion producto del accidente</h4>
+        <select class="form-control" id="tipoLesion" style="font-size: medium;width: 300px;">
+            <option ng-repeat="x in tipoLesion">{{x.model}}</option>
+        </select>
     </div>
 
     <div style="padding-top: 4%; order:2; padding-left: 10%">
@@ -56,12 +61,12 @@
         </select>
 
         <h4>Tipo de circulacion de como ocurrio el accidente</h4>
-        <select class="form-control" id="tipoCirculacion" ng-click="seleccionarTiposCirculacion()" style="font-size: medium;width: 300px;">
+        <select class="form-control" id="tipoCirculacion" style="font-size: medium;width: 300px;">
             <option ng-repeat="x in tipoCirculacion">{{x.model}}</option>
         </select>
 
         <h4>Estado del tiempo de cuando ocurrio el accidente</h4>
-        <select class="form-control" id="estadoTiempo" ng-click="seleccionarEstadosTiempo()" style="font-size: medium;width: 300px;">
+        <select class="form-control" id="estadoTiempo" style="font-size: medium;width: 300px;">
             <option ng-repeat="x in estadoTiempo">{{x.model}}</option>
         </select>
 
@@ -79,9 +84,14 @@
         <select class="form-control" id="kilometro" style="font-size: medium;width: 300px;">
             <option ng-repeat="x in kilometro">{{x.model}}</option>
         </select>
+
+
+        <h4>Fecha cuando sucedio el accidente</h4>
+        <input type="date" id="fecha">
     </div>
 </div>
 
 <center>
+    <br>
     <button class="btn btn-info" ng-click="insertarAccidenteGeneral()">Registrar Accidente</button>
 </center>

@@ -327,7 +327,6 @@ SELECT insertarAccidenteGeneral('Con muertos y/o graves','Salió de la vía','20
 
 */
 
-
 CREATE OR REPLACE FUNCTION insertarEnFallecidos
 (
  p_dia VARCHAR(10),
