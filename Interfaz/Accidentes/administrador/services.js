@@ -141,7 +141,7 @@ angular.module('adminModule')
                                 estadoTiempo, tipoCalzada, descripCalzadaV, descripCalzadaH, tipoAccidente, kilometro, ruta,
                                 fecha, tipoLesion)
         {
-            console.log("Error en service");
+            //console.log("Error en service");
             return $http({
                 method: "POST",
                 url: API_ROOT + "insertAccidenteGeneral"+"?horaInicio=" + horaInicio+"&horaFinal="+horaFinal+
@@ -151,7 +151,6 @@ angular.module('adminModule')
                 kilometro+"&ruta="+ruta+"&fecha="+fecha+"&tipoLesion="+tipoLesion
             });
         };
-
     }]);
 
     

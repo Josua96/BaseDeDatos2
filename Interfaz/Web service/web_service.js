@@ -403,6 +403,22 @@ app.delete('/eliminarAccidente', function(req, res) {
     	})
 	
 })
+app.get('/obtenerAccidentesGenerales', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+  	client.query
+  	('SELECT *  from SeleccionarAccidentesGenerales',function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
 
 
 app.post('/insertarAccidenteGeneral', function(req, res) {
@@ -919,8 +935,7 @@ app.delete('/eliminarEstadoTiempo', function(req, res) {
       		console.log("ERROR: ",error);
       		res.status(400).send(
       			{message:'Ocurrió un error en el proceso'});
-    	})
-	
+    	})	
 })
 
 
@@ -936,8 +951,7 @@ app.get('/obtenerEstadosTiempo', function(req, res) {
       		console.log("ERROR: ",error);
       		res.status(400).send(
       			{message:'Ocurrió un error en el proceso'});
-    	})
-	
+    	})	
 })
 
 app.post('/insertarTipoCalzada', function(req, res) {

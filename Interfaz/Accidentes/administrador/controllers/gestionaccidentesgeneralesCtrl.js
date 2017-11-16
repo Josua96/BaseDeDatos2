@@ -15,6 +15,11 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
     $scope.kilometro = [];
     $scope.tipoLesion = [];
 
+    $scope.inicioArray = 0;
+
+    $scope.accidentesGenerales = [];
+    $scope.accidentesGeneralesAux = [];
+
     $scope.obtenerSeleccionada=function (selected) {
         console.log("entro");
         if (selected===0){
@@ -26,9 +31,41 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
         else if(selected===2){
             window.location.href = ('#/eliminarTipoAccidente');
         }
-        else{
-
+        else{ // selected == 3
+            window.location.href = ('#/mostrarAccidentesGenerales');
         }
+    };
+    $scope.actualizarArreglo = function (op) {
+        $scope.accidentesGeneralesAux.splice(0,$scope.accidentesGeneralesAux.length);
+        if(op === 1){
+            if($scope.inicioArray - 11 >= 0){
+                $scope.inicioArray -= 11;
+                console.log("1. "+$scope.inicioArray);
+                $scope.accidentesGeneralesAux = $scope.accidentesGenerales.splice($scope.inicioArray,11);
+            }
+        }
+        else{
+            if($scope.inicioArray + 11 < $scope.accidentesGenerales.length){
+                $scope.inicioArray += 11;
+                console.log("2. "+$scope.inicioArray);
+                $scope.accidentesGeneralesAux = $scope.accidentesGenerales.splice($scope.inicioArray,11);
+            }
+        }
+        console.log($scope.accidentesGeneralesAux);
+    };
+    $scope.seleccionarAccidentesGenerales=function () {
+        peticiones.seleccionar("obtenerAccidentesGenerales")
+            .then(function (response) {
+                //guardar los datos en el arreglo de registrados
+
+                $scope.accidentesGenerales = response.data;
+                $scope.accidentesGeneralesAux = $scope.accidentesGenerales.splice($scope.inicioArray,11);
+                $scope.inicioArray += 11;
+
+                //console.log($scope.accidentesGenerales.length);
+            }, function (response) {
+                mostrarNotificacion("Error en la carga de accidentes generales", 1);
+            });
     };
 
     $scope.seleccionarProvincia=function () {
@@ -279,5 +316,6 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
     $scope.seleccionarTipoAccidente();
     $scope.seleccionarKilometroRuta();
     $scope.seleccionarTiposLesiones();
+    $scope.seleccionarAccidentesGenerales();
 
 });
