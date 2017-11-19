@@ -1,0 +1,39 @@
+<center>
+    <div class="body">
+        <label style="font-size: x-large">Tabla de fallecidos</label>
+        <div class="table-responsive">
+            <div style="padding-top: 1.5%" class="container-fluid">
+
+                <a class="btn btn-primary" ng-click="actualizarArreglo(1)">Anterior</a>
+                <a class="btn btn-primary" ng-click="actualizarArreglo(2)">Siguiente</a>
+                <table class="table table-hover dashboard-task-infos" style="padding-top: 3%">
+                    <thead style="background-color: #2e6da4 ; ">
+                    <th>Hora inicio del accidente</th>
+                    <th>Hora final del accidente</th>
+                    <th>Tipo de accidente</th>
+                    <th>Ruta donde ocurrió el accidente</th>
+                    <th>Cantón</th>
+                    <th>Edad</th>
+                    <th>Sexo</th>
+                    <th>Rol de la persona accidentada</th>
+                    <th>Acción</th>
+                    </thead>
+                    <tbody style="background-color: #84c7c1">
+                    <tr ng-repeat="fallecido in fallecidosAux">
+                        <td>{{fallecido["horainicio"]}}</td>
+                        <td>{{fallecido["horafinal"]}}</td>
+                        <td>{{fallecido["tipoaccidente"]}}</td>
+                        <td>{{fallecido["ruta"]}}</td>
+                        <td>{{fallecido["canton"]}}</td>
+                        <td>{{fallecido["edad"]}}</td>
+                        <td>{{fallecido["sexo"]}}</td>
+                        <td>{{fallecido["rol"]}}</td>
+                        <td><a class="btn btn-danger" ng-click="eliminar(fallecido)">Eliminar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</center>

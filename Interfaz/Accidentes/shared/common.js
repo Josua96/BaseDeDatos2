@@ -1,6 +1,6 @@
 var closeSideBar=function () {
   var $window = $(window);
-  console.log($window.width());
+  //console.log($window.width());
   if($window.width()<=1000){
     var $body = $('body');
     var $overlay = $('.overlay');

@@ -28,13 +28,24 @@ angular.module('adminModule').controller('gestionaccidentesgeneralesCtrl', funct
         else if(selected===1){
             window.location.href = ('#/modificarTipoAccidente');
         }
-        else if(selected===2){
-            window.location.href = ('#/eliminarTipoAccidente');
-        }
         else{ // selected == 3
             window.location.href = ('#/mostrarAccidentesGenerales');
         }
     };
+    $scope.eliminar = function (registro) {
+        debugger;
+        console.log(registro["idaccidente"]);
+        peticiones.eliminarD("eliminarFallecido",registro["idaccidente"])
+            .then(function (response) {
+                console.log(response);
+                mostrarNotificacion("El accidente general ha sido eliminado correctamente.",2);
+
+            }, function (response) {
+                mostrarNotificacion("Error en la eliminación del accidente general.", 1);
+                console.log(response.data.message);
+            });
+    };
+
     $scope.actualizarArreglo = function (op) {
         $scope.accidentesGeneralesAux.splice(0,$scope.accidentesGeneralesAux.length);
         if(op === 1){

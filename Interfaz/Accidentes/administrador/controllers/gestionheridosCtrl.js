@@ -1,10 +1,76 @@
-angular.module('adminModule').controller('insercionheridosCtrl', function($scope,$location,$http,peticiones){
+angular.module('adminModule').controller('gestionheridosCtrl', function($scope,$location,$http,peticiones){
 
     $scope.provincias=[];
     $scope.lesiones=[];
     $scope.roles=[];
     $scope.cantones=[];
     $scope.distritos=[];
+
+    $scope.tiposAccidentes=[];
+
+    $scope.heridos = [];
+    $scope.heridosAux = [];
+    $scope.inicioArray = 0;
+
+    $scope.obtenerSeleccionada=function (selected) {
+        if (selected === 0){
+            window.location.href = ('#/insertarHeridos');
+        }
+        else if(selected===1){
+            window.location.href = ('#/modificarHerido');
+        }
+        else{
+            window.location.href = ('#/mostrarHeridos');
+        }
+
+    };
+
+    $scope.eliminar = function (registro) {
+        debugger;
+        console.log("registro: "+registro["sexo"]);
+        peticiones.eliminarD("eliminarHeridos",registro["idaccidente"])
+            .then(function (response) {
+                console.log(response);
+                mostrarNotificacion("El fallecido ha sido eliminado correctamente.",2);
+
+            }, function (response) {
+                mostrarNotificacion("Error en la eliminación del fallecido.", 1);
+                console.log(response.data.message);
+            });
+    };
+    $scope.obtenerHeridos = function () {
+        peticiones.seleccionar("obtenerHeridos")
+            .then(function (response) {
+                console.log("Todo: "+response);
+
+                $scope.heridos=response.data;
+                $scope.heridosAux = $scope.heridos.splice($scope.inicioArray,11);
+                if ($scope.fallecidos.length === 0){
+                    mostrarNotificacion("No existen heridos registrados en el sistema",3);
+                }
+            }, function (response) {
+                mostrarNotificacion("Error en la carga de heridos", 1);
+            });
+    };
+
+    $scope.actualizarArreglo = function (op) {
+        $scope.heridosAux.splice(0,$scope.heridosAux.length);
+        if(op === 1){
+            if($scope.inicioArray - 11 >= 0){
+                $scope.inicioArray -= 11;
+                console.log("1. "+$scope.inicioArray);
+                $scope.heridosAux = $scope.heridos.splice($scope.inicioArray,11);
+            }
+        }
+        else{
+            if($scope.inicioArray + 11 < $scope.heridos.length){
+                $scope.inicioArray += 11;
+                console.log("2. "+$scope.inicioArray);
+                $scope.heridosAux = $scope.heridos.splice($scope.inicioArray,11);
+            }
+        }
+        console.log($scope.heridosAux);
+    };
 
     //carga de lesiones registradas
     $scope.cargarLesiones=function () {
@@ -15,7 +81,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
                 //guardar los datos en el arreglo correspondiente
                 $scope.lesiones=recorrerRespuesta(response.data,"v_tipolesion","v_id");
 
-                if ($scope.lesiones.length==0){
+                if ($scope.lesiones.length === 0){
                     mostrarNotificacion("No existen tipos de lesiones registradas en el sistema",3);
                 }
 
@@ -26,14 +92,14 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
     };
 
     $scope.cargarRoles=function () {
-        peticiones.seleccionar("obtenerRolesPersonas")
+            peticiones.seleccionar("obtenerRolesPersonas")
             .then(function (response) {
                 console.log("roles de persona obtenidos");
                 console.log(response);
                 //guardar los datos en el arreglo correspondiente
                 $scope.roles=recorrerRespuesta(response.data,"v_rolpersona","v_id");
 
-                if ($scope.roles.length==0){
+                if ($scope.roles.length === 0){
                     mostrarNotificacion("No existen roles de persona registrados en el sistema",3);
                 }
 
@@ -46,7 +112,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
 
     $scope.cargarDistritos=function () {
         var indice=document.getElementById('cant').selectedIndex;
-        if (indice==-1){
+        if (indice === -1){
             indice=0;
         }
         peticiones.seleccionarDistritos(-1,$scope.cantones[indice].id,-1)
@@ -80,7 +146,7 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
             });
     };
 
-    
+
     //obtener las provincias registradas
     $scope.cargarProvincias=function () {
         peticiones.seleccionarProvincias(-1,-1)
@@ -94,27 +160,27 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
                 console.log(response.data.message);
             });
     };
-    
-    
+
+
     $scope.insertarAccidente=function () {
       var edad=document.getElementById('edad').value;
       var lesion=document.getElementById('lesion').selectedIndex;
       var rol=document.getElementById('rol').selectedIndex;
       var fecha=document.getElementById('date1').value;
       var distrito=document.getElementById('dist').selectedIndex;
-      var sexo= document.getElementById('sexo').selectedIndex;  
-      
+      var sexo= document.getElementById('sexo').selectedIndex;
+
       lesion=evaluarSeleccion(lesion);
       rol=evaluarSeleccion(rol);
       distrito=evaluarSeleccion(distrito);
-      sexo=evaluarSeleccion(sexo);  
-        
-      if (sexo==0){ //si es masculino
-        sexo=true;  
-      }  
+      sexo=evaluarSeleccion(sexo);
+
+      if (sexo === 0){ //si es masculino
+        sexo=true;
+      }
       else{         //si es femenino
-        sexo=false;  
-      }  
+        sexo = false;
+      }
 
         //realizar la peticion de insercion del accidente
       peticiones.insertarHerido($scope.lesiones[lesion].id,fecha,$scope.roles[rol].id,edad,sexo,$scope.distritos[distrito].id)
@@ -123,20 +189,16 @@ angular.module('adminModule').controller('insercionheridosCtrl', function($scope
               mostrarNotificacion("El accidente ha sido registrado",2);
               document.getElementById('edad').value="";
               document.getElementById('date1').value="";
-              
+
           }, function (response) {
               mostrarNotificacion("Error en el procedimiento de inserción del accidente", 1);
               console.log(response.data.message);
           });
-        
     };
 
     //carga de los datos requeridos para la insercion del accidente
     $scope.cargarLesiones();
     $scope.cargarRoles();
     $scope.cargarProvincias();
-
-
-
-
+    $scope.obtenerHeridos();
 });

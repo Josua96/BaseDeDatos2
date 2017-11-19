@@ -19,7 +19,7 @@ CREATE VIEW SeleccionarAccidentes AS
 	INNER JOIN DetallesAccidentes.TiposLesiones AS TL ON TL.Id = AC.IdTipoLesion)
 
 
-SELECT AG.HoraAccidente,AG.AreaGeografica,AG.NombreDistrito,AG.TipoRuta,AG.TipoCurculacion,AG.EstadoTiempo,AG.tipoCarretera,AG.DescripcionCalzadaVertical,
+SELECT AG.IdAccidente,AG.HoraAccidente,AG.AreaGeografica,AG.NombreDistrito,AG.TipoRuta,AG.TipoCurculacion,AG.EstadoTiempo,AG.tipoCarretera,AG.DescripcionCalzadaVertical,
 	AG.DescripcionCalzadaHorizontal,AG.TipoAccidente,AG.Kilometro,AG.NumeroRuta,A.Id,A.Fecha,A.Tipo from SeleccionarAccidentesGenerales AS AG 
 	INNER JOIN SeleccionarAccidentes AS A ON A.Id = AG.IdAccidente 
 

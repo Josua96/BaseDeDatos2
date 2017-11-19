@@ -121,9 +121,9 @@ app.post('/insertarProvincia', function(req, res) {
 
 	})
 	.catch(error => {
-      		console.log("ERROR: ",error);
+      		console.log("ERROR: ",error.detail);
       		res.status(400).send(
-      			{message:'No fue posible realizar la insercion'});
+      			{message:error.detail});
     	})	
 })
 
@@ -406,8 +406,29 @@ app.delete('/eliminarAccidente', function(req, res) {
 app.get('/obtenerAccidentesGenerales', function(req, res) {
 	client = new pg.Client(conString);
 	client.connect();
+	var query = "SELECT AG.IdAccidente,AG.HoraAccidente,AG.AreaGeografica,AG.NombreDistrito,AG.TipoRuta,AG.TipoCurculacion,AG.EstadoTiempo,AG.tipoCarretera,AG.DescripcionCalzadaVertical,"+
+	"AG.DescripcionCalzadaHorizontal,AG.TipoAccidente,AG.Kilometro,AG.NumeroRuta,A.Id,A.Fecha,A.Tipo from SeleccionarAccidentesGenerales AS AG "+
+	"INNER JOIN SeleccionarAccidentes AS A ON A.Id = AG.IdAccidente";
   	client.query
-  	('SELECT *  from SeleccionarAccidentesGenerales',function(err,result){
+  	(query,function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
+
+app.get('/obtenerFallecidos', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+	var query = "SELECT * FROM SeleccionarFallecidos";
+  	client.query
+  	(query,function(err,result){
 		  if (err)
 			 {
 			console.log(err);
@@ -620,6 +641,23 @@ app.delete('/eliminarAccidentePersona', function(req, res) {
 	
 })
 
+app.get('/obtenerHeridos', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+	var query = "SELECT * FROM SeleccionarHeridos";
+  	client.query
+  	(query,function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
 
 app.post('/insertarHerido',function(req,res){
 	

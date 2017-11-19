@@ -205,9 +205,17 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
             })
 
             // heridos
+            .when("/heridos",{
+                templateUrl:"sections/gestionheridos.html",
+                controller:'gestionheridosCtrl'
+            })
             .when("/insertarHeridos",{
-                templateUrl:"sections/insercionHeridos.html",
-                controller:'insercionheridosCtrl'
+                templateUrl:"sections/insertarHeridos.html",
+                controller:'gestionheridosCtrl'
+            })
+            .when("/mostrarHeridos",{
+                templateUrl:"sections/mostrarHeridos.html",
+                controller:'gestionheridosCtrl'
             })
 
             // accidentes generales
@@ -225,9 +233,17 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
             })
 
             //fallecidos
+            .when("/fallecidos",{
+                templateUrl:"sections/gestionfallecidos.html",
+                controller:'gestionfallecidosCtrl'
+            })
             .when("/insertarFallecidos",{
-                templateUrl:"sections/insercionFallecidos.html",
-                controller:'insercionfallecidosCtrl'
+                templateUrl:"sections/insertarFallecidos.html",
+                controller:'gestionfallecidosCtrl'
+            })
+            .when("/mostrarFallecidos",{
+                templateUrl:"sections/mostrarFallecidos.html",
+                controller:'gestionfallecidosCtrl'
             })
     }
 ]);
