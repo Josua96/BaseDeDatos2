@@ -1,26 +1,32 @@
 /*
-=======================================================================================
->    Instrucciones necesarias para poder realizar las consultas a la base de datos    <
-=======================================================================================
+=====================================================================
+>       Instituto Tecnológico de Costa Rica Sede San Carlos         <
+>       Carrera: Ingeniería en Computación                          <
+>       Descripción: Peticiones necesarias para poder               <
+>       consumir los datos de la API del COSEVI                     <
+>       Creadores: Eliomar Antonio Rodríguez Arguedas               <
+>                  Joshua Carranza Perez                            <
+>       Curso: Bases de datos 2                                     <
+=====================================================================
+*/
+
+/*
+=========================================================================================================
+>    Instrucciones necesarias para poder realizar las consultas a la base de datos (configuraciones)    <
+=========================================================================================================
 */
 const pg = require('pg'); //postgres controller
-const conString = "postgres://postgres:12345@localhost:5432/AccidentesTransito"; //connection link
+const conString = "postgres://postgres:12345@localhost:5432/AccidentesTransito";
 const client = new pg.Client(conString);
 var async = require('async');
-client.connect();
 
 /*
 =======================================================================================================================
 >   Función encargada de la inserción de Fallecidos en la BD desde un archivo JSON exportado desde la  API de COSEV   <
 =======================================================================================================================
 */
-<<<<<<< HEAD
-
 function extraerFallecidos(){
     client.connect();
-=======
-function extraerFallecidos(){    
->>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007
     console.log("\n\nInsertando información de Fallecidos en la base de datos,  esto puede tardar bastante tiempo por la gran cantidad de datos...");
     var request = require('request');
     request('http://cosevi.cloudapi.junar.com/api/v2/datastreams/REGIS-DE-FALLE-EN-SITIO/data.ajson/?auth_key=7c23534c30d3fd449f1bd5638363c17b89b7617e', 
@@ -142,7 +148,7 @@ function extraerPersonasAccidentes(){
             message: "successful insertions on Heridos table."
         });
     });
-    console.log("Datos ingresados de manera correcta.");
+    console.log("Datos ingresados de manera correcta, ya puede cerrar este programa.");
 }
 
 /*
@@ -150,10 +156,4 @@ function extraerPersonasAccidentes(){
 >   Llamado de las funciones para que procedan con la extracción de la información   <
 ======================================================================================
 */
-<<<<<<< HEAD
-extraerAccidentes();
-//extraerPersonasAccidentes();
-//extraerFallecidos();
-=======
 extraerFallecidos();
->>>>>>> 05fd3e4c487e0309d5e33eb6a66571cd7bd7f007
