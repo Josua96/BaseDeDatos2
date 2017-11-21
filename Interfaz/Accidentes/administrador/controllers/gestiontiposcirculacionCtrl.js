@@ -10,12 +10,10 @@ angular.module('adminModule').controller('gestiontiposcirculacionCtrl', function
         else if(selected===1){
             window.location.href = ('#/modificarTipoCirculacion');
         }
-        else if(selected===2){
+        else {
             window.location.href = ('#/eliminarTipoCirculacion');
         }
-        else{
-
-        }
+       
 
     };
     
@@ -69,19 +67,10 @@ angular.module('adminModule').controller('gestiontiposcirculacionCtrl', function
         
         peticiones.seleccionar("obtenerTiposCirculacion")
             .then(function (response) {
-                console.log("tipos de circulación obtenidos");
-                console.log(response);
                 //guardar los datos en el arreglo de registrados
                 $scope.registrados=recorrerRespuesta(response.data,"v_tipocirculacion","v_id");
-
-                if ($scope.registrados.length==0){
-                    mostrarNotificacion("No existen tipos de circulación registrados en el sistema",3);
-                }
-
             }, function (response) {
                 mostrarNotificacion("Error en la carga de tipos de circulación", 1);
-                console.log("respuesta negativa");
-                console.log(response.data.message);
             });
     };
 

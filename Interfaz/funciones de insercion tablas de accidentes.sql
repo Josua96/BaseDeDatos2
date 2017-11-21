@@ -1,4 +1,4 @@
-
+﻿
 
 --insercion de accidentes generales desde el sitio web
 CREATE OR REPLACE FUNCTION insertarAccidenteGeneralWeb
@@ -9,9 +9,9 @@ CREATE OR REPLACE FUNCTION insertarAccidenteGeneralWeb
  IN p_areaGeografica VARCHAR(20),
  IN p_idDistrito INT,
  IN p_tipoRuta VARCHAR(20),
- IN p_idTipoCirculacion INT
+ IN p_idTipoCirculacion INT,
  IN p_IdEstadoTiempo INT,
- IN p_idTipoCalzada INT
+ IN p_idTipoCalzada INT,
  IN p_calzadaVertical INT,
  IN p_calzadaHorizontal INT,
  IN p_idTipoAccidente INT,
@@ -59,9 +59,6 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
-
-
-select * from AccidentesTran.Accidentes
 
 CREATE OR REPLACE FUNCTION insertarEnFallecidosWeb
 (
@@ -136,3 +133,42 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql;
+
+-- esta funcion es de los CRUDS
+CREATE OR REPLACE FUNCTION insertAccidenteGeneralWeb
+(
+ IN p_horaInicio TIME,
+ IN p_horaFinal TIME,
+ IN p_areaGeografica CHAR(1),
+ IN p_idDistrito INT,
+ IN p_tipoRuta CHAR(1),
+ IN p_idTipoCirculacion INT,
+ IN p_idEstadoTiempo INT,
+ IN p_idTipoCalzada INT,
+ IN p_idCalzadaVertical INT,
+ IN p_idCalzadaHorizontal INT,
+ IN p_idTipoAccidente INT,
+ IN p_idKilometro INT,
+ IN p_idRuta INT, 
+
+ IN p_fecha DATE,--
+ IN p_idTipoLesion INT --
+)
+RETURNS BOOLEAN
+AS
+$BODY$
+	DECLARE idAccident INT;  /** VARIABLE REQUERIDA PARA LA INSERCION  */		
+BEGIN   
+	PERFORM insertar_accidente(p_idTipoLesion,p_fecha);
+	idAccident=(SELECT MAX(id) FROM AccidentesTran.Accidentes);
+
+	PERFORM insertar_accidentesGenerales(idAccident,p_horaInicio,p_horaFinal,p_areaGeografica,p_idDistrito,
+	p_tipoRuta,p_idTipoCirculacion,p_idEstadoTiempo,p_idTipoCalzada,p_idCalzadaVertical,p_idCalzadaHorizontal,p_idTipoAccidente,p_idKilometro,p_idRuta);
+	RETURN TRUE;
+	
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+select * from accidentestran.accidentesgenerales 

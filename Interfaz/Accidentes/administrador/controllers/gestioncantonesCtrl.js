@@ -10,12 +10,10 @@ angular.module('adminModule').controller('gestioncantonesCtrl', function($scope,
         else if(selected===1){
             window.location.href = ('#/modificarCanton');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarCanton');
         }
-        else{
-
-        }
+        
 
     };
 

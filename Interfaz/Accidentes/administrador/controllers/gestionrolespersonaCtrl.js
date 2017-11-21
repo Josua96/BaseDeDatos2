@@ -11,12 +11,10 @@ angular.module('adminModule').controller('gestionrolespersonaCtrl', function($sc
         else if(selected===1){
             window.location.href = ('#/modificarRolPersona');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarRolPersona');
         }
-        else{
-
-        }
+        
 
     };
     

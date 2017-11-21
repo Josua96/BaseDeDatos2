@@ -11,12 +11,10 @@ angular.module('adminModule').controller('gestiontiposaccidentesCtrl', function(
         else if(selected===1){
             window.location.href = ('#/modificarTipoAccidente');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarTipoAccidente');
         }
-        else{
-
-        }
+        
     };
     
     

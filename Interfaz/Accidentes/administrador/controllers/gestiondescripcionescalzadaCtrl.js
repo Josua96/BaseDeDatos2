@@ -10,12 +10,10 @@ angular.module('adminModule').controller('gestiondescripcionescalzadaCtrl', func
         else if(selected===1){
             window.location.href = ('#/modificarDescripcionCalzada');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarDescripcionCalzada');
         }
-        else{
-
-        }
+      
 
     };
 

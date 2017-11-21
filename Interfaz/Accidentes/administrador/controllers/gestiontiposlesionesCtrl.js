@@ -10,13 +10,10 @@ angular.module('adminModule').controller('gestiontiposlesionesCtrl', function($s
         else if(selected===1){
             window.location.href = ('#/modificarTipoLesion');
         }
-        else if(selected===2){
+        else {
             window.location.href = ('#/eliminarTipoLesion');
         }
-        else{
-
-        }
-
+        
     };
 
 

@@ -10,22 +10,14 @@ angular.module('adminModule').controller('consultasCtrl', function($scope,$locat
     $scope.titulo;
     $scope.provincias=[];
     $scope.obtenerSeleccionada=function (selected) {
-        if (selected===0){
-            window.location.href = ('#/Visualizar acc');
-        }
-        else if(selected===1){
-            window.location.href = ('#/modificarCanton');
-        }
-        else if(selected===2){
-            window.location.href = ('#/eliminarCanton');
-        }
-        else if (selected===3){
+        
+        if (selected===1){
             window.location.href = ('#/accidentesGeneralesPorTipo');
         }
-        else if(selected==4){
+        else if(selected==2){
             window.location.href = ('#/accidentesGeneralesPorEstadoTiempo');
         }
-        else if(selected==5){
+        else if(selected==3){
             window.location.href = ('#/causaMayorAccidentesGeneralesProvincias');
         }
     };

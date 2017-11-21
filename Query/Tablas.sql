@@ -5,7 +5,7 @@ CREATE SCHEMA AccidentesTran;		-- todas las tablas relacionadas con accidentes e
 CREATE TABLE Direccion.Provincias
 (
 	IdProvincia		SMALLSERIAL	NOT NULL,
-	NombreProvincia		VARCHAR(50)	NOT NULL	UNIQUE,
+	NombreProvincia		VARCHAR(50)	NOT NULL,
 	CONSTRAINT PK_IdProvincia_Provincias	PRIMARY KEY (IdProvincia)
 );
 
@@ -14,8 +14,9 @@ CREATE TABLE Direccion.Cantones
 	IdCanton 	SMALLSERIAL 	NOT NULL,
 	IdProvincia 	SMALLINT 	NOT NULL,
 	NombreCanton 	VARCHAR(50) 	NOT NULL,
-	CONSTRAINT  PK_IdCanton_Cantones PRIMARY KEY (IdCanton),
-	CONSTRAINT  FK_IdProvincia_Cantones FOREIGN KEY (IdProvincia) REFERENCES Direccion.Provincias(IdProvincia) ON DELETE CASCADE ON UPDATE CASCADE  
+	CONSTRAINT  	PK_IdCanton_Cantones 	PRIMARY KEY (IdCanton),
+	CONSTRAINT  	FK_IdProvincia_Cantones FOREIGN KEY (IdProvincia) 
+						REFERENCES Direccion.Provincias(IdProvincia) ON DELETE CASCADE ON UPDATE CASCADE  
 );
 
 CREATE TABLE Direccion.Distritos 

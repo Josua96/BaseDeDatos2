@@ -4,11 +4,7 @@ angular.module('adminModule')
 function($scope,$location) 
     {       
         $scope.user = "Administrador";
-        $scope.email = "correo@administrad";           
-       
-      
-    
-   
+        $scope.email = "correo@administrad";
     }
     
 );

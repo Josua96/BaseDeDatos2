@@ -70,6 +70,10 @@ END;
 $BODY$ 
 LANGUAGE plpgsql;
 
+Select seleccionar_provincias (null, null)
+
+select * from direccion.provincias
+
 /**Cantones  */
 
 --insertar

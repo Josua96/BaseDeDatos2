@@ -9,12 +9,10 @@ angular.module('adminModule').controller('gestionkilometrorutaCtrl', function($s
         else if(selected===1){
             window.location.href = ('#/modificarKilometroRuta');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarKilometroRuta');
         }
-        else{
-            
-        }
+       
 
     };
 

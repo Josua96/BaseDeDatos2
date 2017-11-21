@@ -132,7 +132,6 @@ angular.module('adminModule')
             });
         };
 
-
         /*
          ==========================================
          Endpoints para algunas consultas
@@ -158,8 +157,27 @@ angular.module('adminModule')
                 method: "GET",
                 url: API_ROOT +"causaMayorACProvincias?idProvincia="+id
             });
-        }
+        };
 
+        /*
+        ==========================================
+        Endpoints para insertar accidente general
+        ==========================================
+         */
+        this.insertAccidenteGeneral=function (horaInicio, horaFinal, areaGeografica, distrito, tipoRuta, tipoCirculacion,
+                                estadoTiempo, tipoCalzada, descripCalzadaV, descripCalzadaH, tipoAccidente, kilometro, ruta,
+                                fecha, tipoLesion)
+        {
+            //console.log("Error en service");
+            return $http({
+                method: "POST",
+                url: API_ROOT + "insertAccidenteGeneral"+"?horaInicio=" + horaInicio+"&horaFinal="+horaFinal+
+                "&areaGeografica="+areaGeografica+"&distrito="+distrito+"&tipoRuta="+tipoRuta+"&tipoCirculacion="+
+                tipoCirculacion+"&estadoTiempo="+estadoTiempo+"&tipoCalzada="+tipoCalzada+"&descripCalzadaV="+
+                descripCalzadaV+"&descripCalzadaH="+descripCalzadaH+"&tipoAccidente="+tipoAccidente+"&kilometro="+
+                kilometro+"&ruta="+ruta+"&fecha="+fecha+"&tipoLesion="+tipoLesion
+            });
+        };
     }]);
 
     

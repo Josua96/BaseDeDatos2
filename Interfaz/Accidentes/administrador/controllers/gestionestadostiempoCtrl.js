@@ -10,12 +10,10 @@ angular.module('adminModule').controller('gestionestadostiempoCtrl', function($s
         else if(selected===1){
             window.location.href = ('#/modificarEstadoTiempo');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarEstadoTiempo');
         }
-        else{
-
-        }
+       
 
     };
 

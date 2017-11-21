@@ -9,12 +9,10 @@ angular.module('adminModule').controller('gestionprovinciasCtrl', function($scop
         else if(selected===1){
             window.location.href = ('#/modificarProvincia');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarProvincia');
         }
-        else{
-            
-        }
+       
 
     };
 

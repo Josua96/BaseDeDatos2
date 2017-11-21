@@ -1,0 +1,37 @@
+<center>
+    <div class="body">
+        <label style="font-size: x-large">Tabla de heridos</label>
+        <div class="table-responsive">
+            <div style="padding-top: 1.5%" class="container-fluid">
+
+                <a class="btn btn-primary" ng-click="actualizarArreglo(1)">Anterior</a>
+                <a class="btn btn-primary" ng-click="actualizarArreglo(2)">Siguiente</a>
+                <table class="table table-hover dashboard-task-infos" style="padding-top: 3%">
+                    <thead style="background-color: #2e6da4 ; ">
+                    <th>Fecha</th>
+                    <th>Rol del accidentado</th>
+                    <th>Tipo de lesión producida</th>
+                    <th>Nombre del distrito del accidente</th>
+                    <th>Edad del accidentado</th>
+                    <th>Género del accidentado</th>
+                    <th>Fecha del accidente</th>
+                    <th>Acción</th>
+                    </thead>
+                    <tbody style="background-color: #84c7c1">
+                    <tr ng-repeat="herido in heridosAux">
+                        <td>{{herido["fecha"].slice(0,10)}}</td>
+                        <td>{{herido["rol"]}}</td>
+                        <td>{{herido["tipo"]}}</td>
+                        <td>{{herido["nombredistrito"]}}</td>
+                        <td>{{herido["edad"]}}</td>
+                        <td>{{retornaGenero(herido["sexo"])}}</td>
+                        <td>{{herido["fecha"]}}</td>
+                        <td><a class="btn btn-danger" ng-click="eliminar($index)">Eliminar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</center>

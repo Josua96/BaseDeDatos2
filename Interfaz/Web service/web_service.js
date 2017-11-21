@@ -1,3 +1,8 @@
+﻿﻿/*
+*     Web Service REST para la BD Accidentes Transito
+*
+* Autor: Josua Carranza | 2016------
+* Contacto: ---@gmail.com, ---, ---@estudiantec.cr
 /*
 *  WEB SERVICE para la base de datos Accidentes Tránsito
 *
@@ -12,7 +17,7 @@ var client;
 var express = require('express');
 var app = express(); //restful api
 var pgp = require('pg-promise')();
-var base64=require('base-64');
+//var base64=require('base-64');
 
 var cn = {
     host: 'localhost',
@@ -123,11 +128,10 @@ app.post('/insertarProvincia', function(req, res) {
 
 	})
 	.catch(error => {
-      		console.log("ERROR: ",error);
+      		console.log("ERROR: ",error.detail);
       		res.status(400).send(
-      			{message:'No fue posible realizar la insercion'});
-    	})
-	
+      			{message:error.detail});
+    	})	
 })
 
 app.post('/modificarProvincia', function(req, res) {
@@ -406,6 +410,43 @@ app.delete('/eliminarAccidente', function(req, res) {
     	})
 	
 })
+app.get('/obtenerAccidentesGenerales', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+	var query = "SELECT AG.IdAccidente,AG.HoraAccidente,AG.AreaGeografica,AG.NombreDistrito,AG.TipoRuta,AG.TipoCurculacion,AG.EstadoTiempo,AG.tipoCarretera,AG.DescripcionCalzadaVertical,"+
+	"AG.DescripcionCalzadaHorizontal,AG.TipoAccidente,AG.Kilometro,AG.NumeroRuta,A.Id,A.Fecha,A.Tipo from SeleccionarAccidentesGenerales AS AG "+
+	"INNER JOIN SeleccionarAccidentes AS A ON A.Id = AG.IdAccidente";
+  	client.query
+  	(query,function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
+
+app.get('/obtenerFallecidos', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+	var query = "SELECT * FROM SeleccionarFallecidos";
+  	client.query
+  	(query,function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
 
 
 app.post('/insertarAccidenteGeneral', function(req, res) {
@@ -454,6 +495,35 @@ app.post('/insertarAccidenteGeneral', function(req, res) {
     			});
 
    })
+
+// funcion propia del CRUD de accident general
+app.post('/insertAccidenteGeneral',function(req,res){
+	db.func('insertAccidenteGeneralWeb',[
+		req.query.horaInicio,
+		req.query.horaFinal,
+		req.query.areaGeografica,
+		req.query.distrito,
+		req.query.tipoRuta,
+		req.query.tipoCirculacion,
+		req.query.estadoTiempo,
+		req.query.tipoCalzada,
+		req.query.descripCalzadaV,
+		req.query.descripCalzadaH,
+		req.query.tipoAccidente,
+		req.query.kilometro,
+		req.query.ruta,
+		req.query.fecha,
+		req.query.tipoLesion
+	])
+	.then(data => {
+		res.end(JSON.stringify(true));
+	})
+	.catch(error => {
+		console.log("ERROR: ",error);
+		res.status(400).send(
+		{message:'Ocurrió un error en el proceso'});
+	})
+})
 
 
 
@@ -578,6 +648,23 @@ app.delete('/eliminarAccidentePersona', function(req, res) {
 	
 })
 
+app.get('/obtenerHeridos', function(req, res) {
+	client = new pg.Client(conString);
+	client.connect();
+	var query = "SELECT * FROM SeleccionarHeridos";
+  	client.query
+  	(query,function(err,result){
+		  if (err)
+			 {
+			console.log(err);
+			res.status(400).send(
+				{message:'Ocurrió un error en el proceso'});
+			return;
+		  }
+		  console.log(result.rows);
+		  res.end(JSON.stringify(result.rows));
+	  });
+})
 
 app.post('/insertarHerido',function(req,res){
 	
@@ -894,8 +981,7 @@ app.delete('/eliminarEstadoTiempo', function(req, res) {
       		console.log("ERROR: ",error);
       		res.status(400).send(
       			{message:'Ocurrió un error en el proceso'});
-    	})
-	
+    	})	
 })
 
 
@@ -911,8 +997,7 @@ app.get('/obtenerEstadosTiempo', function(req, res) {
       		console.log("ERROR: ",error);
       		res.status(400).send(
       			{message:'Ocurrió un error en el proceso'});
-    	})
-	
+    	})	
 })
 
 app.post('/insertarTipoCalzada', function(req, res) {

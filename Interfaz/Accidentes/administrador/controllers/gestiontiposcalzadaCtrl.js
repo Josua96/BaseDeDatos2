@@ -11,12 +11,10 @@ angular.module('adminModule').controller('gestiontiposcalzadaCtrl', function($sc
         else if(selected===1){
             window.location.href = ('#/modificarTipoCalzada');
         }
-        else if(selected===2){
+        else {
             window.location.href = ('#/eliminarTipoCalzada');
         }
-        else{
-
-        }
+     
 
     };
     

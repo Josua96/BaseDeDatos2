@@ -11,12 +11,10 @@ angular.module('adminModule').controller('gestiondistritosCtrl', function($scope
         else if(selected===1){
             window.location.href = ('#/modificarDistrito');
         }
-        else if(selected===2){
+        else{
             window.location.href = ('#/eliminarDistrito');
         }
-        else{
-
-        }
+        
 
     };
 

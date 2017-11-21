@@ -1,0 +1,72 @@
+<div style="background-color: rgb(255,255,255);">
+<center>
+<label style="font-size: x-large"> Secció de inserción de accidentes con heridos </label>
+<br>
+<label style="font-size: x-large"> Seleccione las opciones requeridas </label>
+</center>
+
+<div class="container-fluid" style="padding-top:2%;display: flex;">
+    <div class="container-fluid" style="order: 1; margin-left: 10%">
+        <label style="font-size: x-large">  Tipo de lesión </label>
+        <select class="form-control" id="lesion" style="font-size: medium;width: 300px;">
+            <option  ng-repeat="x in lesiones" > {{x.model}}</option>
+        </select>
+
+        <label style="font-size: x-large">  Fecha del accidente </label>
+        <div class="input-group" style="width: 100px;">
+            <div class="input-group-addon">
+                <i class="fa fa-calendar">
+                </i>
+            </div>
+            <input style="border: 1px solid;" class="form-control" id="date1"  name="date1" type="date"/>
+        </div>
+
+        <label style="font-size: x-large">  Edad de la persona accidentada </label>
+        <br>
+        <input type="number" id="edad" >
+
+        <label style="font-size: x-large"> Seleccione el sexo de la persona accidentada </label>
+        <br>
+
+        <select class="form-control" id="sexo" style="font-size: medium;width: 300px;" >
+            <option > Masculino</option>
+            <option > Femenino </option>
+        </select>
+
+        <label style="font-size: x-large"> Rol de la persona accidentada </label>
+        <select class="form-control" id="rol" style="font-size: medium;width: 300px;" >
+            <option  ng-repeat="x in roles" > {{x.model}}</option>
+        </select>
+
+    </div>
+    <div class="container-fluid" style="order: 2;">
+
+
+
+        <label style="font-size: x-large"> Provincia donde ocurrió el accidente </label>
+        <select class="form-control" id="prov" style="font-size: medium;width: 300px;" ng-click="cargarCantones()">
+            <option  ng-repeat="x in provincias" > {{x.model}}</option>
+        </select>
+
+        <label style="font-size: x-large"> Cantón donde ocurrió el accidente </label>
+        <select class="form-control" id="cant" style="font-size: medium;width: 300px;" ng-click="cargarDistritos()">
+            <option  ng-repeat="x in cantones" > {{x.model}}</option>
+        </select>
+
+        <label style="font-size: x-large"> Distrito donde ocurrió el accidente </label>
+        <select class="form-control" id="dist" style="font-size: medium;width: 300px;">
+            <option  ng-repeat="x in distritos" > {{x.model}}</option>
+        </select>
+
+        <br>
+    </div>
+</div>
+<center>
+    <div class="container-fluid">
+
+        <button class="btn btn-info" ng-click="insertarAccidente()"> Registrar Accidente </button>
+        <br>
+        <br>
+    </div>
+</center>
+</div>

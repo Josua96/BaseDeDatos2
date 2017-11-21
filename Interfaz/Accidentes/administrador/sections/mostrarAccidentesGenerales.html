@@ -1,0 +1,49 @@
+<center>
+    <div class="body">
+        <label style="font-size: x-large">Tabla de accidentes generales</label>
+        <div class="table-responsive">
+            <div style="padding-top: 1.5%" class="container-fluid">
+
+                <a class="btn btn-primary" ng-click="actualizarArreglo(1)">Anterior</a>
+                <a class="btn btn-primary" ng-click="actualizarArreglo(2)">Siguiente</a>
+                <table class="table table-hover dashboard-task-infos" style="padding-top: 3%">
+                    <thead style="background-color: #2e6da4 ; ">
+                    <th>Hora del accidente</th>
+                    <th>Fecha </th>
+                    <th>Área geográfica</th>
+                    <th>Nombre del distrito</th>
+                    <th>Tipo de ruta</th>
+                    <th>Tipo de circulación</th>
+                    <th>Estado del tiempo</th>
+                    <th>Tipo de carretera</th>
+                    <th>Descripción calzada vertical</th>
+                    <th>Descripción calzada horizontal</th>
+                    <th>Tipo de accidente</th>
+                    <th>Kilometro</th>
+                    <th>Ruta</th>
+                    <th>Acción</th>
+                    </thead>
+                    <tbody style="background-color: #84c7c1">
+                    <tr ng-repeat="accidente in accidentesGeneralesAux">
+                        <td>{{accidente["horaaccidente"]}}</td>
+                        <td>{{accidente["fecha"].slice(0,10)}}</td>
+                        <td>{{accidente["areageografica"]}}</td>
+                        <td>{{accidente["nombredistrito"]}}</td>
+                        <td>{{accidente["tiporuta"]}}</td>
+                        <td>{{accidente["tipocurculacion"]}}</td>
+                        <td>{{accidente["estadotiempo"]}}</td>
+                        <td>{{accidente["tipocarretera"]}}</td>
+                        <td>{{accidente["descripcioncalzadavertical"]}}</td>
+                        <td>{{accidente["descripcioncalzadahorizontal"]}}</td>
+                        <td>{{accidente["tipoaccidente"]}}</td>
+                        <td>{{accidente["kilometro"]}}</td>
+                        <td>{{accidente["numeroruta"]}}</td>
+                        <td><a class="btn btn-danger" ng-click="eliminar($index)">Eliminar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</center>
