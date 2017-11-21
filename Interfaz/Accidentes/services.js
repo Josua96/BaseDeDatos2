@@ -4,12 +4,19 @@
 angular.module('loginModule')
     .service('peticiones',['$http',function($http)
     {
-        this.registro=function (idCanton,idProvincia,nombre) {
-            console.log("prueba de factory");
+
+        //solicitando autorizacion
+        this.autenticar=function (usuario,codigo) {
+            if (usuario==""){
+                usuario="usuario";
+            }
+            if (codigo==""){
+                codigo="pin";
+            }
+            
             return $http({
                 method : "GET",
-                url :API_ROOT+"obtenerCantones?idcanton="+idCanton+"&idprovincia="+idProvincia+
-                "&nombre="+nombre
+                url :API_ROOT+"login?usuario="+usuario+"&codigo="+codigo
             })
         }
 

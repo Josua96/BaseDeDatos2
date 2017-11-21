@@ -178,6 +178,22 @@ function recorrerRespuesta(respuesta,texto,identificador) {
     return lista;
 }
 
+//num indica si debe convertirse los datos a enterros
+function recorrerConsulta(respuesta,texto,num){
+    var largo=respuesta.length;
+    var lista=[];
+    for (i=0;i<largo;i++){
+        if (num==0){ //se requiere conversion a entero
+            lista.push(parseInt(respuesta[i][texto])); //agregar a la lista de opciones
+        }
+        else{
+            lista.push(respuesta[i][texto]); //agregar a la lista de opciones
+        }
+        
+    }
+    return lista;
+
+}
 
 //funcion para mostrar al usuario de manera bien escrita el tipo de carta solicitada 
 function setTextSolicitudes(solicitudes ){

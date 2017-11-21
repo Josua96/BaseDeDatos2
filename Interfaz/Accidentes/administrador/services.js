@@ -132,6 +132,34 @@ angular.module('adminModule')
             });
         };
 
+
+        /*
+         ==========================================
+         Endpoints para algunas consultas
+         ==========================================
+         */
+
+        this.accidentesGeneralesPorTipo=function () {
+            return $http({
+                method: "GET",
+                url: API_ROOT +"accidentesGeneralesPorTipo"
+            });
+        };
+
+        this.accidentesGeneralesPorEstadoTiempo=function () {
+            return $http({
+                method: "GET",
+                url: API_ROOT +"accidentesGeneralesPorEstadoTiempo"
+            });
+        };
+
+        this.causaMayorACProvincias=function (id) {
+            return $http({
+                method: "GET",
+                url: API_ROOT +"causaMayorACProvincias?idProvincia="+id
+            });
+        }
+
     }]);
 
     

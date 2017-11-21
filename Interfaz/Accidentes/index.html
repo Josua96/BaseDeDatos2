@@ -14,8 +14,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
-    <link href="../bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" />
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" />
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -35,27 +35,27 @@
         <a class="navbar-brand" style="float:right;" >
         <img src="assets/images/TEC.130212023_std.png">
         </a>                                            
-    </nav>        
-    <br><br>
-    <br><br>    
-    <div id="LoginDiv" class="center">  
-        <br>
+    </nav>
+    <div id="LoginDiv" class="container-fluid" style="border: 1px solid;">
         <center>
-            <h5 style="width:70%">Accidentes de transito en Costa Rica</h5>
+            <h2 style="width:70%">Sistema de Accidentes de tránsito </h2>
         </center>
-        <br><br>
-        <form>
-            <label style="display:flex; justify-content:left; font-size: 18px">Usuario</label>
-            <input style="font-size:16px" type="text" ng-model="username"  id="inputUsuario">
-            <label style="display:flex; justify-content:left; font-size: 18px">Contraseña</label>
-            <input style="font-size:16px" type="password" ng-model="password" id="inputContraseña">
-            <button class="btn bagTecBlue center btn-login" type="submit" name="action" id="botonSubmit" ng-click="login()">Entrar
-                <i class="material-icons right"></i>
+        <div class="container-fluid" style="padding-top: 4%;">
+            <label style="display:flex; justify-content:left; font-size: 18px;color:black;"> <b>Usuario </b></label>
+            <input style="font-size:16px;" type="text" placeholder="Ingrese su usuario"   id="inputUsuario">
+            <label style="display:flex; justify-content:left; font-size: 18px;color:black;">Contraseña</label>
+            <input style="font-size:16px;"  type="password" placeholder="Ingrese su contraseña" id="inputContraseña">
+            <center>
+            <button class="btn-success" style="height: 10%" type="submit"  name="action" id="botonSubmit" ng-click="login()">Ingresar al sistema
             </button>
-        </form>                  
-    </div>     
-    <br><br>         
- 
+            </center>
+    </div>
+
+
+</div>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+
     <script src="shared/base64.min.js"></script>
     <script src="shared/common.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -63,8 +63,13 @@
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
     <script src="loginController.js"></script>
     <script src="services.js"> </script>
+
+    <script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>
+    <script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>
+
 
 </body>   
 </html>

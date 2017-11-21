@@ -961,6 +961,7 @@ END
 $BODY$ 
 LANGUAGE plpgsql;
 
+
 CREATE OR REPLACE FUNCTION seleccionar_kilometrosRutas
 ( 
 	OUT v_id SMALLINT,
@@ -970,7 +971,7 @@ CREATE OR REPLACE FUNCTION seleccionar_kilometrosRutas
 AS
 $BODY$
 BEGIN
-	RETURN query SELECT * FROM DetallesAccidentes.KilometrosRutas;
+	RETURN query SELECT * FROM DetallesAccidentes.KilometrosRutas ORDER BY Numero ASC;
 END;
 $BODY$ 
 LANGUAGE plpgsql;

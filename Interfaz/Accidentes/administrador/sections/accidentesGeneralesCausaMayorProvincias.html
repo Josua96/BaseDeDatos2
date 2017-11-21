@@ -1,0 +1,32 @@
+<center>
+<div  class="container-fluid" style="top: 10%;background-color: rgb(255,255,255);">
+
+    <label style="font-size: x-large"> Seleccione la provincia para visualizar la mayor causa de accidentes generales en la misma
+
+    </label>
+    <br>
+    <select class="form-control" id="selec" style="font-size: medium;width: 300px;" ng-click="obtenerCausaMayorAccidentesGenerales()">
+        <option ng-repeat="x in provincias"> {{x.model}}</option>
+    </select>
+    <br>
+    <br>
+
+    <label style="font-size: medium"> Mayor causa de accidentes generales para esa provincia
+    <br>
+    </label>
+    <br>
+    <span id="causa" style="font-size: medium"> {{causaAccidente}}
+
+    </span>
+    <br>
+
+    <label style="font-size: medium"> Cantidad de accidentes generales registrados debido a dicha causa
+
+    </label>
+    <br>
+    <span id="accidentes" style="font-size: medium"> {{cantidadAccidentes}}
+
+    </span>
+
+</div>
+</center>

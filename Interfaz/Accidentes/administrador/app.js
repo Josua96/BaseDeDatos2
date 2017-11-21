@@ -1,4 +1,4 @@
-angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
+angular.module('adminModule',["ngRoute","ngResource","ui.calendar","chart.js"])
 .config(['$routeProvider',function($routeProvider)
     {
 
@@ -221,5 +221,28 @@ angular.module('adminModule',["ngRoute","ngResource","ui.calendar"])
                     templateUrl:"sections/insercionFallecidos.html",
                     controller:'insercionfallecidosCtrl'
                 })
+
+                /***   CONSULTAS    */
+
+                .when("/consultas",{
+                    templateUrl:"sections/Consultas.html",
+                    controller:'consultasCtrl'
+                })
+
+                .when("/accidentesGeneralesPorTipo",{
+                    templateUrl:"sections/accidentesGeneralesPorTipoTiempo.html",
+                    controller:'consultasCtrl'
+                })
+
+                .when("/accidentesGeneralesPorEstadoTiempo",{
+                    templateUrl:"sections/accidentesGeneralesPorTipoTiempo.html",
+                    controller:'consultasCtrl'
+                })
+
+                .when("/causaMayorAccidentesGeneralesProvincias",{
+                    templateUrl:"sections/accidentesGeneralesCausaMayorProvincias.html",
+                    controller:'consultasCtrl'
+                })
+        
     }
 ]);

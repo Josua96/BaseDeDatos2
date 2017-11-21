@@ -42,7 +42,7 @@
     <link href="../assets/css/themes/informes.css" rel="stylesheet">
 </head>
 
-<body class="theme-blue" style="background-image:url('../assets/images/fondoTec.jpg');
+<body class="theme-blue" style="background-image:url('../assets/images/fond.jpg');
                     background-size:cover;
                     background-repeat:no-repeat;
                     background-attachment:fixed;">            
@@ -96,11 +96,20 @@
                     </li>
 
                     <li  class="active">
+                        <a href="#/consultas" onclick="closeSideBar()">
+                            <i class="material-icons">assignment</i>
+                            <span>Sección de consultas</span>
+                        </a>
+                    </li>
+
+
+                    <li  class="active">
                         <a href="#/insertarHeridos" onclick="closeSideBar()">
                             <i class="material-icons">assignment</i>
                             <span>Registro de nuevo accidente con heridos</span>
                         </a>
                     </li>
+
 
 
                     <li  class="active">
@@ -222,7 +231,7 @@
     <script type="text/javascript" src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
     <script type="text/javascript" src="../bower_components/fullcalendar/dist/gcal.js"></script>    
     <script type="text/javascript" src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    
+
     <!-- app Js -->
     <script src="app.js"></script>
     <!-- services -->
@@ -255,6 +264,7 @@
     <script src="controllers/gestionkilometrorutaCtrl.js"></script><!--Importar el js-->
     <script src="controllers/insercionheridosCtrl.js"></script><!--Importar el js-->
     <script src="controllers/insercionfallecidosCtrl.js"></script><!--Importar el js-->
+    <script src="controllers/consultasCtrl.js"></script><!--Importar el js-->
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -273,7 +283,6 @@
 
     <script src="../assets/js/pages/forms/form-wizard.js"></script>
 
-
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
 
@@ -282,7 +291,15 @@
     <script src="../shared/base64.min.js"></script>
     <script src="../shared/common.js"></script>
     <script src="../shared/operationHelper.js"></script>
-    <script src="../shared/session.js"></script>  
+    <script src="../shared/session.js"></script>
+    <!--
+    <script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>
+    <script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>-->
+    <script src="../bower_components/chart.js/dist/Chart.min.js"></script>
+    <script src="../bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+
+ <!--   <script src="node_modules/chart.js/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script> -->
   
 </body>
 

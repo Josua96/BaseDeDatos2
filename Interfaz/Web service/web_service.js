@@ -83,16 +83,23 @@ app.use(function(req, res, next) {
 
 app.get('/login',function(req,res){
 
+	console.log("haciendo login");
 	var conexion="postgres://"+req.query.usuario+":"+req.query.codigo+"@localhost:5432/AccidentesTransito";
 	client = new pg.Client(conexion);
+
   	//validar que se ingresó un usuario válido
   	client.connect(function(err){
   		if (err){
+  			console.log("error en login");
   			res.status(400).send(
       			{message:'Ocurrió un error en el proceso'});
+  			client.end();
   			return;
   		}
-  		res.end(JSON.stringify(true));
+  		else{
+  			res.end(JSON.stringify(true));
+  		}
+  		
 
   	});
 
@@ -606,6 +613,7 @@ app.post('/insertarFallecido',function(req,res){
       	{message:'Ocurrió un error en el proceso'});
     			})
 })
+
 
 app.post('/insertarHeridos', function(req, res) {
 	var id;
@@ -1323,6 +1331,118 @@ app.get('/obtenerRolesPersonas', function(req, res) {
 
 
 //================================================================================================
+//      Consultas 
+//================================================================================================
+
+//cantidad de accidentes generales por tipo de accidente
+app.get('/accidentesGeneralesPorTipo', function(req, res) {
+	client = new pg.Client(conString);
+  	client.connect();
+    client.query
+    ('SELECT Ti.Tipo,COUNT(Id) as CantidadAccidentes FROM DetallesAccidentes.TiposAccidentes as Ti  INNER JOIN  (SELECT Ag.* FROM AccidentesTran.AccidentesGenerales as Ag '
+	+'INNER JOIN (SELECT * FROM AccidentesTran.Accidentes) as Ac ON  Ag.IdAccidente=Ac.Id)as H ON H.idTipoAccidente=Ti.Id '+
+	'GROUP BY Ti.Id',function(err,result){
+    		if (err)
+   			{
+      		console.log(err);
+      		res.status(400).send(
+      			{message:'Ocurrió un error en el proceso'});
+      		return;
+    		}
+    		console.log(result);
+    		res.end(JSON.stringify(result.rows)); //obtener los resultados
+    	});
+	
+})
+
+//cantidad de accidentes generales por estado tiempo
+app.get('/accidentesGeneralesPorEstadoTiempo', function(req, res) {
+	client = new pg.Client(conString);
+  	client.connect();
+    client.query
+    ('SELECT Ti.Estado,COUNT(Id)AS CantidadAccidentes FROM DetallesAccidentes.EstadosTiempo as Ti INNER JOIN '+ 
+	'(SELECT Ag.* FROM AccidentesTran.AccidentesGenerales as Ag INNER JOIN (SELECT * FROM AccidentesTran.Accidentes) as Ac '+
+	 'ON  Ag.IdAccidente=Ac.Id)as H ON H.idEstadoTiempo=Ti.Id '+
+	'GROUP BY Ti.Id ',function(err,result){
+    		if (err)
+   			{
+      		console.log(err);
+      		res.status(400).send(
+      			{message:'Ocurrió un error en el proceso'});
+      		return;
+    		}
+    		console.log(result);
+    		res.end(JSON.stringify(result.rows)); //obtener los resultados
+    	});
+	
+})
+
+//consultar mayor causa de accidentes, por provincia: se recibe el id de provincia
+app.get('/causaMayorACProvincias', function(req, res) {
+	
+	db.func('buscar_causa_mayor',[req.query.idProvincia])
+	.then(data => {
+		console.log(data);
+		res.end(JSON.stringify(data));
+
+	})
+	.catch(error => {
+      		console.log("ERROR: ",error);
+      		res.status(400).send(
+      			{message:'Ocurrió un error en el proceso'});
+    	})
+	
+})
+
+
+
+/*
+//login ddel usuario en el sistemaa
+app.get('/login', function(req, res) {
+	//validacion de token
+	stringConection="postgres://($1):($2)@localhost:5432/AccidentesTransito",[req.query.user,req.query.password];
+	client=new pg.Client(stringConection);
+	client.connect(err=>{
+			if(err)
+				res.end(JSON.stringify(false));
+				return;
+			client.end();
+			res.end.JSON.stringify(true); //conexion exitosa
+	});
+	
+	
+})
+
+*/
+
+
+
+/*
+
+==========================
+forma para hacer una consulta normal y retornar el resultado
+============================
+client = new pg.Client(conString);
+  	client.connect();
+    client.query
+    ('SELECT *  from Direccion.Provincias',function(err,result){
+    		if (err)
+   			{
+      		console.log(err);
+      		res.status(400).send(
+      			{message:'Ocurrió un error en el proceso'});
+      		return;
+    		}
+    		console.log(result);
+    		res.end(JSON.stringify(result.rows));
+    	});
+*/
+
+
+
+
+
+//================================================================================================
 //      Configuración e inicio del sistema
 //================================================================================================
 
@@ -1335,38 +1455,3 @@ var server = app.listen(8081, function () {
   console.log("Servicio web escuchando en http://%s:%s", host, port)
 
 })
-
-
-
-
-
-
-// solicitudes
-// 	**AgregarSolicitud (datos)
-// 	**ObtenerSolicitud (identificador)
-//  **eliminarSolicitud (identificador)
-// 	**ObtenerSolicitudesNoAtendidas
-// 	ObtenerSolicitudesAtendidas ?
-// 	**ActualizarEstado (identificador)
-
-
-// informes
-// 	**AgregarInforme (datos)
-// 	**ObtenerInforme (profesor | area | identificador) [obtenerlo para modificarlo, por lo que requiere el idInforme]
-// 	**ObtenerInformes () [sin parámetros]
-//  **ActualizarInforme (idInforme)
-
-
-//[Comentario***] puede requerirse el endpoint obtenerInforme y obtenerSolicitud (por id)
-
-//Las funciones ObtenerInforme y ObtenerInformes son básicamente la misma con diferentes parámetros y con diferentes nombres
-//(debido a que el parámetro es del mismo tipo para la mayoría de los casos)
-
-//Asumiendo que sólo se mantendrán registrados los informes de un semestres el procedimiento para obtener todos será un 'select *'
-
-// 	**ObtenerImagenes (idInforme | area)
-// 	**ModificarInforme
-// 	*EliminarInforme
-
-
-//Procedimientos almacenados realizados (faltan pruebas con datos)
